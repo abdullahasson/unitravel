@@ -1,13 +1,21 @@
 // Next Inlt
-import { useTranslations } from "next-intl";
+// Section
+import Hero from "./_section/hero"
+import MobileApp from "./_section/mobile-app";
+// Components
+import Header from "@/components/header";
+import Searchweghit from "@/components/search-weghit";
+import Footer from "@/components/footer";
+
 
 export default function Home() {
-
-  const t = useTranslations("Hero");
-
   return (
     <div>
-      {t("Heading")}
+      <Header />
+      <Hero />
+      <Searchweghit />
+      <MobileApp />
+      <Footer />
     </div>
   );
 }

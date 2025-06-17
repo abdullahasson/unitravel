@@ -1,5 +1,69 @@
 {
-    "Hero" : {
-        "Heading" : "Hello Pro"
+    "Header": {
+        "Home": "Home",
+        "Flight": "Flight",
+        "Hotel": "Hotel",
+        "FeaturedDeals": "Featured Deals",
+        "Blog": "Blog",
+        "Login": "Login",
+        "Signup": "Signup"
+    },
+    "Hero": {
+        "Heading": "Best travel deals at amazing prices",
+        "SubHeading": "Search, compare, and book your next trip with ease and save up to 50% with our exclusive offers.",
+        "JoinPartner": "Join as a Partner",
+        "BrowseOffers": "Browse offers"
+    },
+    "MobileApp": {
+        "Badge": "New experience",
+        "Heading": "Download the Rahlaty app and book your trip in minutes",
+        "SubHeading": "Enjoy a unique booking experience with our new app. Browse thousands of offers, book your flights, and manage your reservations from anywhere, anytime.",
+        "Features": {
+            "One": {
+                "Title": "Instant booking",
+                "Text": "Book your flight in less than 2 minutes with simple steps"
+            },
+            "Two": {
+                "Title": "Exclusive offers",
+                "Text": "Offers and discounts of up to 50% only for app users"
+            },
+            "Three": {
+                "Title": "Offer alerts",
+                "Text": "Be the first to know about special offers on your favorite destinations."
+            },
+            "Four": {
+                "Title": "Secure payment",
+                "Text": "Multiple secure payment systems to protect your transactions"
+            }
+        },
+        "AvailableNow": "Now available on all devices",
+        "DownloadButton": "Download it from"
+    },
+    "Footer": {
+        "AboutUs": {
+            "Title": "About MyTrips",
+            "Text": "We offer the best travel deals, flights, and hotels at competitive prices. Book your next trip with us and save money."
+        },
+        "QuickLinks": {
+            "Title": "Quick Links",
+            "Home": "Home",
+            "Flight": "Flight Deals",
+            "Hotel": "Hotel Deals",
+            "FeaturedDeals": "Special Offers",
+            "Contact": "Contact Us"
+        },
+        "PopularDestinations": {
+            "Title": "Popular Destinations",
+            "c1": "Dubai",
+            "c2": "Istanbul",
+            "c3": "Malaysia",
+            "c4": "Sharm El Sheikh",
+            "c5": "Paris"
+        },
+        "ContactUs": {
+            "Title": "Contact Us",
+            "Location": "Riyadh, Saudi Arabia"
+        },
+        "BootomFooter": "MyTrips, All Rights Reserved | Abdullah Hassoun 2025"
     }
 }
