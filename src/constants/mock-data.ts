@@ -136,3 +136,24 @@ export const hotelDeals = [
         features: ["شاطئ خاص", "أكواريوم", "منتجع متكامل"]
     }
 ];
+
+
+// /api/aviasales/prices_for_dates?origin=LED&destination=HKT&currency=usd
+// const Result = [
+//     {
+//         flight_number: "7966",
+//         link: "/search/LED2109HKT1?t=HU17584854001758571500001195LEDPEKHKT_a6911dbba745ef398a3481c1f952b2fb_26669&search_date=17062025&expected_price_uuid=7a1640a0-e59b-451e-9696-38f0ca1ad102&expected_price_source=share&expected_price_currency=usd&expected_price=339",
+//         origin_airport: "LED",
+//         destination_airport: "HKT",
+//         departure_at: "2025-09-21T20:10:00+03:00",
+//         airline: "HU",
+//         destination: "HKT",
+//         origin: "LED",
+//         price: 339,
+//         return_transfers: 0,
+//         duration: 1195,
+//         duration_to: 830,
+//         duration_back: 0,
+//         transfers: 1
+//     }
+// ]

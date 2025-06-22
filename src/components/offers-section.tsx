@@ -9,10 +9,10 @@ const OffersSection = ({heading , subheading , children } : OffersSectionProps) 
         <section className="section py-24">
             <div className="container mx-auto px-4 max-w-7xl">
                 <div className="section-header text-center mb-16">
-                    <h2 className="section-title text-3xl md:text-4xl font-extrabold mb-5 relative inline-block opacity-0 translate-y-20">
+                    <h2 className="section-title text-3xl md:text-4xl font-extrabold mb-7 relative inline-block">
                         {heading}
                     </h2>
-                    <p className="section-subtitle text-gray-500 max-w-2xl mx-auto opacity-0 translate-y-5">
+                    <p className="section-subtitle text-gray-500 max-w-2xl text-2xl mx-auto">
                         {subheading}
                     </p>
                 </div>

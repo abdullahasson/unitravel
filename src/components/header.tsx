@@ -1,21 +1,27 @@
 // Next 
 import Link from "next/link"
 // Next Intl
-import { useTranslations } from "next-intl";
+import { useTranslations , useLocale } from "next-intl";
 // Components
 import SwitchLanguages from "./switch-languages"
+// Icons
+import {
+    Plane
+} from "lucide-react"
+
 
 const Header = () => {
-
+    // Translate
     const t = useTranslations("Header");
+    const lang = useLocale();
 
     return (
         <header id="header" className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-white/95 shadow-md transition-all duration-400">
             <div className="container mx-auto px-4 xl:px-0 max-w-7xl">
                 <div className="navbar flex justify-between items-center py-4 transition-all duration-400">
                     <Link href="" className="logo flex items-center gap-2 text-2xl font-extrabold text-darker transition-all duration-400">
-                        <i className="fas fa-plane text-[var(--color-primary)] transition-all duration-400" />
-                        <span>رحلاتي</span>
+                        <Plane className="text-[var(--color-primary)] transition-all duration-400" />
+                        <span>{t("Logo")}</span>
                     </Link>
                     <div className="nav-links hidden lg:flex gap-8">
                         <Link href="" className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
@@ -30,8 +36,8 @@ const Header = () => {
                         <Link href="" className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
                             {t("FeaturedDeals")}
                         </Link>
-                        <Link href="" className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
-                            {t("Blog")}
+                        <Link href={`/${lang}/mobile-app`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
+                            {t("App")}
                         </Link>
                     </div>
 

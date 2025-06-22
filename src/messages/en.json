@@ -1,10 +1,11 @@
-{
+{   
     "Header": {
+        "Logo": "Hotlino",
         "Home": "Home",
         "Flight": "Flight",
         "Hotel": "Hotel",
         "FeaturedDeals": "Featured Deals",
-        "Blog": "Blog",
+        "App": "App",
         "Login": "Login",
         "Signup": "Signup"
     },
@@ -37,9 +38,60 @@
             }
         },
         "AvailableNow": "Now available on all devices",
-        "DownloadButton": "Download it from"
+        "DownloadButton": "Download it from",
+
+        "mobile" : {
+            "Heading": "هوتلينو",
+            "Text" : "ابحث. احجز. سافر",
+            "Card" : {
+                "Title" : "الرياض ⇨ دبي",
+                "Date" : "الخميس 15 يوليو",
+                "Price" : "899 ر.س"
+            } ,
+            "Card2" : {
+                "Title" : "جدة ⇨ إسطنبول",
+                "Date" : "السبت 20 أغسطس",
+                "Price" : "1,250 ر.س"
+            },
+            "ReadQrCode": "مسح الرمز لتحميل التطبيق"
+        }
     },
+    "SearchFlightsComponent": {
+        "TripType": {
+            "One": "One-way",
+            "Return": "Return"
+        },
+        "DepartureDate": {
+            "Placeholder": "Departure date"
+        },
+        "ReturnDate": {
+            "Placeholder": "Return date"
+        },
+        "SearchButton": "Search",
+        "AdvancedOptions": "Advanced options",
+        "Currency": "Currency",
+        "SortBy": "Sort by",
+        "Passengers": "Passengers",
+        "Passenger": "Passenger",
+        "Direct": "Direct flights only",
+        "NoResults": {
+            "Title": "No results found",
+            "Message": "We couldn't find any flights matching your criteria. Try adjusting your search parameters."
+        },
+        "NotFoundFlight": {
+            "Title": "No flights found",
+            "Message": "We couldn't find any flights matching your criteria. Try adjusting your search parameters."
+        }
+    },
+    "FlightCard": {
+        "FlightListTitle": "flights found",
+        "direct": "Direct",
+        "nonStop": "Non-stop",
+        "stops": "{count, plural, one {# stop} other {# stops}}",
+        "select": "Select"
+      },
     "Footer": {
+        "Logo": "Hotlino",
         "AboutUs": {
             "Title": "About MyTrips",
             "Text": "We offer the best travel deals, flights, and hotels at competitive prices. Book your next trip with us and save money."
@@ -65,5 +117,81 @@
             "Location": "Riyadh, Saudi Arabia"
         },
         "BootomFooter": "MyTrips, All Rights Reserved | Abdullah Hassoun 2025"
+    },
+
+    "AppDownloadPage": {
+      "hero": {
+        "title": "Your Perfect Travel Companion",
+        "subtitle": "Download our app to book flights, hotels, and discover amazing destinations with exclusive mobile-only deals.",
+        "benefits": {
+          "secure": "Secure Payments",
+          "payment": "Multiple Payment Options",
+          "availability": "24/7 Availability"
+        }
+      },
+      "features": {
+        "title": "Why Our App Stands Out",
+        "subtitle": "Experience travel booking like never before with our powerful features",
+        "flight": {
+          "title": "Instant Flight Booking",
+          "description": "Find and book flights in seconds with our intuitive interface and real-time availability."
+        },
+        "hotel": {
+          "title": "Smart Hotel Search",
+          "description": "Discover the perfect accommodation with smart filters, photos, and verified reviews."
+        },
+        "discovery": {
+          "title": "Destination Discovery",
+          "description": "Explore new destinations with curated travel guides and personalized recommendations."
+        },
+        "alerts": {
+          "title": "Price Alerts",
+          "description": "Set alerts for your favorite routes and get notified when prices drop."
+        }
+      },
+      "testimonials": {
+        "title": "What Travelers Say",
+        "subtitle": "Join millions of satisfied users who travel smarter with our app",
+        "1": {
+          "name": "Sarah Johnson",
+          "role": "Frequent Traveler",
+          "content": "This app has completely changed how I travel. I saved over $500 on my last trip thanks to their price comparison feature!"
+        },
+        "2": {
+          "name": "Mohammed Ali",
+          "role": "Business Traveler",
+          "content": "The mobile check-in and boarding pass features save me so much time at airports. A must-have for any traveler."
+        },
+        "3": {
+          "name": "Emma Rodriguez",
+          "role": "Travel Blogger",
+          "content": "I've tried every travel app out there, and this one is by far the most intuitive and feature-rich. The hotel booking experience is exceptional."
+        }
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Everything you need to know about our mobile app",
+        "1": {
+          "question": "Is the app available for both iOS and Android?",
+          "answer": "Yes! Our app is available for both iOS and Android devices. You can download it from the App Store or Google Play."
+        },
+        "2": {
+          "question": "Do I need to create a new account for the app?",
+          "answer": "No, you can use your existing website account to log in to the app. All your saved preferences and booking history will be synced automatically."
+        },
+        "3": {
+          "question": "Are mobile bookings more expensive?",
+          "answer": "Actually, we offer exclusive mobile-only deals that are often cheaper than our website prices. Plus, you'll get special app-only promotions."
+        },
+        "4": {
+          "question": "Can I manage my existing bookings through the app?",
+          "answer": "Absolutely! You can view, modify, or cancel any booking made through our platform directly in the app."
+        }
+      },
+      "cta": {
+        "title": "Ready to Travel Smarter?",
+        "subtitle": "Download the app today and get $20 off your first booking!",
+        "note": "App available in both English and Arabic languages"
+      }
     }
 }

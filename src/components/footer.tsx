@@ -2,6 +2,17 @@
 import Link from "next/link";
 // Next Intl
 import { useTranslations } from "next-intl"
+// Icons 
+import {
+    Facebook ,
+    Twitter ,
+    Instagram ,
+    Youtube ,
+    ChevronLeft ,
+    Map ,
+    Phone ,
+    MessageCircleReply
+} from "lucide-react"
 
 const Footer = () => {
 
@@ -18,16 +29,16 @@ const Footer = () => {
 
                         <div className="social-links flex gap-4">
                             <Link href="#" className="social-link w-11 h-11 rounded-full flex items-center justify-center bg-white/10 text-white text-lg transition-all duration-400">
-                                <i className="fab fa-facebook-f" />
+                                <Facebook />
                             </Link>
                             <Link href="#" className="social-link w-11 h-11 rounded-full flex items-center justify-center bg-white/10 text-white text-lg transition-all duration-400">
-                                <i className="fab fa-twitter" />
+                                <Twitter />
                             </Link>
                             <Link href="#" className="social-link w-11 h-11 rounded-full flex items-center justify-center bg-white/10 text-white text-lg transition-all duration-400">
-                                <i className="fab fa-instagram" />
+                                <Instagram />
                             </Link>
                             <Link href="#" className="social-link w-11 h-11 rounded-full flex items-center justify-center bg-white/10 text-white text-lg transition-all duration-400">
-                                <i className="fab fa-youtube" />
+                                <Youtube />
                             </Link>
                         </div>
                     </div>
@@ -36,31 +47,36 @@ const Footer = () => {
                         <ul className="footer-links">
                             <li className="mb-4">
                                 <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
-                                    <i className="fas fa-chevron-left text-accent" />
+                                    
+                                    <ChevronLeft className="text-[var(--color-accent))]" />
                                     {t("QuickLinks.Home")}
                                 </Link>
                             </li>
                             <li className="mb-4">
                                 <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
-                                    <i className="fas fa-chevron-left text-accent" />
+                                    
+                                    <ChevronLeft className="text-[var(--color-accent))]" />
                                     {t("QuickLinks.Flight")}
                                 </Link>
                             </li>
                             <li className="mb-4">
                                 <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
-                                    <i className="fas fa-chevron-left text-accent" />
+                                    
+                                    <ChevronLeft className="text-[var(--color-accent))]" />
                                     {t("QuickLinks.Hotel")}
                                 </Link>
                             </li>
                             <li className="mb-4">
                                 <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
-                                    <i className="fas fa-chevron-left text-accent" />
+                                    
+                                    <ChevronLeft className="text-[var(--color-accent))]" />
                                     {t("QuickLinks.FeaturedDeals")}
                                 </Link>
                             </li>
                             <li>
                                 <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
-                                    <i className="fas fa-chevron-left text-accent" />
+                                    
+                                    <ChevronLeft className="text-[var(--color-accent))]" />
                                     {t("QuickLinks.Contact")}
                                 </Link>
                             </li>
@@ -71,31 +87,31 @@ const Footer = () => {
                         <ul className="footer-links">
                             <li className="mb-4">
                                 <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
-                                    <i className="fas fa-map-marker-alt text-accent" />
+                                    <Map className="text-[var(--color-accent)]" />
                                     {t("PopularDestinations.c1")}
                                 </Link>
                             </li>
                             <li className="mb-4">
                                 <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
-                                    <i className="fas fa-map-marker-alt text-accent" />
+                                    <Map className="text-[var(--color-accent)]" />
                                     {t("PopularDestinations.c2")}
                                 </Link>
                             </li>
                             <li className="mb-4">
                                 <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
-                                    <i className="fas fa-map-marker-alt text-accent" />
+                                    <Map className="text-[var(--color-accent)]" />
                                     {t("PopularDestinations.c3")}
                                 </Link>
                             </li>
                             <li className="mb-4">
                                 <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
-                                    <i className="fas fa-map-marker-alt text-accent" />
+                                    <Map className="text-[var(--color-accent)]" />
                                     {t("PopularDestinations.c4")}
                                 </Link>
                             </li>
                             <li>
                                 <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
-                                    <i className="fas fa-map-marker-alt text-accent" />
+                                    <Map className="text-[var(--color-accent)]" />
                                     {t("PopularDestinations.c5")}
                                 </Link>
                             </li>
@@ -106,19 +122,19 @@ const Footer = () => {
                         <ul className="footer-links">
                             <li className="mb-4">
                                 <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
-                                    <i className="fas fa-envelope text-accent" />
+                                    <MessageCircleReply className="text-[var(--color-accent)]" />
                                     info@rahhalati.com
                                 </Link>
                             </li>
                             <li className="mb-4">
                                 <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
-                                    <i className="fas fa-phone text-accent" />
+                                    <Phone className="text-[var(--color-accent)]" />
                                     +966 123 456 789
                                 </Link>
                             </li>
                             <li>
                                 <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
-                                    <i className="fas fa-map-marker-alt text-accent" />
+                                    <Map className="text-[var(--color-accent)]" />
                                     {t("ContactUs.Location")}
                                 </Link>
                             </li>

@@ -113,6 +113,25 @@
   animation: wave 20s linear infinite;
 }
 
+[dir="rtl"] .rotate-90 {
+  transform: rotate(-90deg);
+}
+
+[dir="rtl"] .mr-4 {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+[dir="rtl"] .ml-3 {
+  margin-left: 0;
+  margin-right: 0.75rem;
+}
+
+[dir="rtl"] .mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
 .button {
   background-color: var(--color-primary);
   font-family: var(--font-tajawal);

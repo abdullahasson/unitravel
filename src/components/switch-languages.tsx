@@ -14,6 +14,8 @@ import es from "../../public/es.png"
 import tr from "../../public/tr.png"
 import gb from "../../public/gb.png"
 import fr from "../../public/fr.png"
+// Icons 
+import { ChevronDown } from "lucide-react"
 
 const SwitchLanguages = () => {
     const pathname = usePathname();
@@ -41,7 +43,7 @@ const SwitchLanguages = () => {
             <div className="flex items-center gap-2" onClick={() => setOpen(!open)}>
                 <Image src={handleActiveLanguageImage[lang]} className="language-flag" alt={handleActiveLanguageButttonText[lang]} />
                 <span className="text-gray-700 font-medium">{handleActiveLanguageButttonText[lang]}</span>
-                <i className="fas fa-chevron-down text-xs text-gray-500" />
+                <ChevronDown className="text-xs text-gray-500" />
             </div>
   
 
@@ -58,7 +60,7 @@ const SwitchLanguages = () => {
                             <span className="language-name">English</span>
                             <span className="language-code">EN</span>
                         </Link>
-                        <Link href={`/fr/${pathname.split("/").slice(2).join("/")}`} className={`language-item ${lang === "fr" ? "active" : ""}`}>
+                        {/* <Link href={`/fr/${pathname.split("/").slice(2).join("/")}`} className={`language-item ${lang === "fr" ? "active" : ""}`}>
                             <Image src={fr} className="language-flag" alt="Français" />
                             <span className="language-name">Français</span>
                             <span className="language-code">FR</span>
@@ -72,7 +74,7 @@ const SwitchLanguages = () => {
                             <Image src={tr} className="language-flag" alt="Türkçe" />
                             <span className="language-name">Türkçe</span>
                             <span className="language-code">TR</span>
-                        </Link>
+                        </Link> */}
                     </div>
                 ) : null
             }

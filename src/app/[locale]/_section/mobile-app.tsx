@@ -1,5 +1,13 @@
 // Next Intl
 import { useTranslations } from "next-intl"
+// Icons
+import {
+    Zap ,
+    Percent ,
+    Bell ,
+    Wallet ,
+    Plane
+} from "lucide-react"
 
 const MobileApp = () => {
 
@@ -26,29 +34,29 @@ const MobileApp = () => {
                                 {/* مميزات التطبيق */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                                     <div className="feature-card bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20">
-                                        <div className="w-14 h-14 rounded-xl bg-accent-gradient flex items-center justify-center mb-4">
-                                            <i className="fas fa-bolt text-2xl text-white" />
+                                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center mb-4">
+                                            <Zap className="text-2xl text-white" />
                                         </div>
                                         <h3 className="text-xl font-bold mb-2">{t("Features.One.Title")}</h3>
                                         <p className="text-gray-200">{t("Features.One.Text")}</p>
                                     </div>
                                     <div className="feature-card bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20">
                                         <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center mb-4">
-                                            <i className="fas fa-percent text-2xl text-white" />
+                                            <Percent className="text-2xl text-white" />
                                         </div>
                                         <h3 className="text-xl font-bold mb-2">{t("Features.Two.Title")}</h3>
                                         <p className="text-gray-200">{t("Features.Two.Text")}</p>
                                     </div>
                                     <div className="feature-card bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20">
                                         <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center mb-4">
-                                            <i className="fas fa-bell text-2xl text-white" />
+                                            <Bell className="text-2xl text-white" />
                                         </div>
                                         <h3 className="text-xl font-bold mb-2">{t("Features.Three.Title")}</h3>
                                         <p className="text-gray-200">{t("Features.Three.Text")}</p>
                                     </div>
                                     <div className="feature-card bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20">
                                         <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center mb-4">
-                                            <i className="fas fa-wallet text-2xl text-white" />
+                                            <Wallet className="text-2xl text-white" />
                                         </div>
                                         <h3 className="text-xl font-bold mb-2">{t("Features.Four.Title")}</h3>
                                         <p className="text-gray-200">{t("Features.Four.Text")}</p>
@@ -79,29 +87,29 @@ const MobileApp = () => {
                                         <div className="h-6 bg-gray-900 rounded-t-2xl mx-auto -mt-4 w-32" />
                                         <div className="bg-gradient-to-br from-blue-500 to-indigo-700 rounded-2xl h-96 flex flex-col justify-center items-center p-4">
                                             <div className="text-center mb-6">
-                                                <i className="fas fa-plane-departure text-5xl text-white mb-3" />
-                                                <h3 className="text-white text-2xl font-bold">رحلاتي</h3>
-                                                <p className="text-blue-100">ابحث. احجز. سافر</p>
+                                                <Plane className="text-5xl text-white mb-3" />
+                                                <h3 className="text-white text-2xl font-bold">{t("mobile.Heading")}</h3>
+                                                <p className="text-blue-100">{t("mobile.Text")}</p>
                                             </div>
                                             <div className="w-full max-w-xs">
                                                 <div className="bg-white/20 backdrop-blur rounded-xl p-4 mb-4">
                                                     <div className="flex justify-between items-center mb-2">
-                                                        <span className="text-white font-medium">الرياض ⇨ دبي</span>
+                                                        <span className="text-white font-medium">{t("mobile.Card.Title")}</span>
                                                         <span className="text-yellow-300">★ 4.8</span>
                                                     </div>
                                                     <div className="flex justify-between text-sm text-blue-100">
-                                                        <span>الخميس 15 يوليو</span>
-                                                        <span className="font-bold">899 ر.س</span>
+                                                        <span>{t("mobile.Card.Date")}</span>
+                                                        <span className="font-bold">{t("mobile.Card.Price")}</span>
                                                     </div>
                                                 </div>
                                                 <div className="bg-white/20 backdrop-blur rounded-xl p-4">
                                                     <div className="flex justify-between items-center mb-2">
-                                                        <span className="text-white font-medium">جدة ⇨ إسطنبول</span>
+                                                        <span className="text-white font-medium">{t("mobile.Card2.Title")}</span>
                                                         <span className="text-yellow-300">★ 4.9</span>
                                                     </div>
                                                     <div className="flex justify-between text-sm text-blue-100">
-                                                        <span>السبت 20 أغسطس</span>
-                                                        <span className="font-bold">1,250 ر.س</span>
+                                                        <span>{t("mobile.Card2.Date")}</span>
+                                                        <span className="font-bold">{t("mobile.Card2.Price")}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -125,7 +133,7 @@ const MobileApp = () => {
                                                         <div className="bg-black rounded-sm" />
                                                     </div>
                                                 </div>
-                                                <p className="text-sm text-gray-700 font-semibold">مسح الرمز لتحميل التطبيق</p>
+                                                <p className="text-sm text-gray-700 font-semibold">{t("mobile.ReadQrCode")}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -152,7 +160,7 @@ const MobileApp = () => {
                     <div className="container mx-auto px-4 max-w-7xl">
                         <div className="text-center mb-16">
                             <h2 className="text-3xl md:text-4xl font-extrabold text-dark mb-4">آراء مستخدمينا</h2>
-                            <p className="text-gray-600 max-w-2xl mx-auto">اكتشف لماذا يحب آلاف المسافرين تطبيق رحلاتي</p>
+                            <p className="text-gray-600 max-w-2xl mx-auto">اكتشف لماذا يحب آلاف المسافرين تطبيق  هوتلينو</p>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             <div className="bg-white p-8 rounded-2xl shadow-custom border border-gray-100">
