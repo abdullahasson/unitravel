@@ -1,17 +1,21 @@
 // src/app/[locale]/app-download/page.tsx
 'use client';
 
+// React
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+// Next Intl
 import { useLocale, useTranslations } from 'next-intl';
-import { 
-  Apple, 
-  Play, 
-  Plane, 
-  Hotel, 
-  Globe, 
-  Bell, 
-  Star, 
+// Animations
+import { motion, AnimatePresence } from 'framer-motion';
+// Icons
+import {
+  Apple,
+  Play,
+  Plane,
+  Hotel,
+  Globe,
+  Bell,
+  Star,
   ChevronDown,
   Smartphone,
   ShieldCheck,
@@ -25,13 +29,13 @@ export default function AppDownloadPage() {
   const locale = useLocale();
   const t = useTranslations('AppDownloadPage');
   const isRTL = locale === 'ar';
-  
+
   // State for FAQ accordion
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  
+
   // State for testimonial carousel
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  
+
   // Features data
   const features = [
     {
@@ -59,7 +63,7 @@ export default function AppDownloadPage() {
       color: 'bg-rose-50 text-rose-600'
     }
   ];
-  
+
   // Testimonials data
   const testimonials = [
     {
@@ -81,7 +85,7 @@ export default function AppDownloadPage() {
       rating: 5
     }
   ];
-  
+
   // FAQ data
   const faqs = [
     {
@@ -101,32 +105,32 @@ export default function AppDownloadPage() {
       answer: t('faq.4.answer')
     }
   ];
-  
+
   // Handle FAQ toggle
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
-  
+
   // Auto-rotate testimonials
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 5000);
-    
+
     return () => clearInterval(interval);
   }, [testimonials.length]);
-  
+
   // Navigation functions
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
   };
-  
+
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   return (
-    <div className={`min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 ${isRTL ? 'rtl' : ''}`}>
+    <div className={`min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 ${isRTL ? 'rtl' : 'ltr'}`}>
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24">
         <div className="absolute inset-0 z-0">
@@ -134,16 +138,16 @@ export default function AppDownloadPage() {
           <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
           <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-emerald-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-            <motion.div 
-              className="lg:w-1/2 text-center lg:text-left"
+            <motion.div
+              className="lg:w-1/2 text-center lg:text-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <motion.h1 
+              <motion.h1
                 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -151,8 +155,8 @@ export default function AppDownloadPage() {
               >
                 {t('hero.title')}
               </motion.h1>
-              
-              <motion.p 
+
+              <motion.p
                 className="mt-4 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -160,8 +164,8 @@ export default function AppDownloadPage() {
               >
                 {t('hero.subtitle')}
               </motion.p>
-              
-              <motion.div 
+
+              <motion.div
                 className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -176,8 +180,8 @@ export default function AppDownloadPage() {
                   <span>Google Play</span>
                 </button>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -197,8 +201,8 @@ export default function AppDownloadPage() {
                 </div>
               </motion.div>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="lg:w-1/2 relative"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -206,14 +210,14 @@ export default function AppDownloadPage() {
             >
               <div className="relative">
                 <div className={`absolute -top-8 ${isRTL ? '-right-16' : '-left-16'} w-72 h-72 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob`}></div>
-                
+
                 <div className="relative flex justify-center">
-                  <motion.div 
+                  <motion.div
                     className="relative z-10"
-                    animate={{ 
+                    animate={{
                       y: [0, -10, 0],
                     }}
-                    transition={{ 
+                    transition={{
                       duration: 4,
                       repeat: Infinity,
                       ease: "easeInOut"
@@ -228,13 +232,13 @@ export default function AppDownloadPage() {
                       </div>
                     </div>
                   </motion.div>
-                  
-                  <motion.div 
+
+                  <motion.div
                     className={`absolute top-16 ${isRTL ? 'left-0' : 'right-0'} z-0`}
-                    animate={{ 
+                    animate={{
                       y: [0, 10, 0],
                     }}
-                    transition={{ 
+                    transition={{
                       duration: 4,
                       repeat: Infinity,
                       ease: "easeInOut",
@@ -251,12 +255,12 @@ export default function AppDownloadPage() {
           </div>
         </div>
       </section>
-      
+
       {/* Features Section */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <motion.h2 
+            <motion.h2
               className="text-3xl md:text-4xl font-bold text-gray-900"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -265,7 +269,7 @@ export default function AppDownloadPage() {
             >
               {t('features.title')}
             </motion.h2>
-            <motion.p 
+            <motion.p
               className="mt-4 text-lg text-gray-600"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -275,7 +279,7 @@ export default function AppDownloadPage() {
               {t('features.subtitle')}
             </motion.p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <motion.div
@@ -297,12 +301,12 @@ export default function AppDownloadPage() {
           </div>
         </div>
       </section>
-      
+
       {/* Testimonials Section */}
       <section className="py-16 md:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <motion.h2 
+            <motion.h2
               className="text-3xl md:text-4xl font-bold text-gray-900"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -311,7 +315,7 @@ export default function AppDownloadPage() {
             >
               {t('testimonials.title')}
             </motion.h2>
-            <motion.p 
+            <motion.p
               className="mt-4 text-lg text-gray-600"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -321,7 +325,7 @@ export default function AppDownloadPage() {
               {t('testimonials.subtitle')}
             </motion.p>
           </div>
-          
+
           <div className="max-w-4xl mx-auto">
             <AnimatePresence mode="wait">
               <motion.div
@@ -334,13 +338,13 @@ export default function AppDownloadPage() {
               >
                 <div className="flex items-center mb-6">
                   <div className="w-16 h-16 rounded-full bg-gradient-to-br from-teal-50 to-teal-100 border-2 border-dashed border-teal-200 flex-shrink-0" />
-                  <div className={`ml-4 ${isRTL ? 'mr-4' : ''}`}>
+                  <div className="mx-4">
                     <h4 className="text-xl font-bold text-gray-900">{testimonials[currentTestimonial].name}</h4>
                     <p className="text-gray-600">{testimonials[currentTestimonial].role}</p>
                   </div>
                   <div className="ml-auto flex">
                     {[...Array(5)].map((_, i) => (
-                      <Star 
+                      <Star
                         key={i}
                         className={`${i < testimonials[currentTestimonial].rating ? 'text-amber-400 fill-amber-400' : 'text-gray-300'}`}
                         size={20}
@@ -349,19 +353,19 @@ export default function AppDownloadPage() {
                   </div>
                 </div>
                 <blockquote className="text-lg text-gray-700 border-l-3 border-teal-500 pl-4 py-2">
-                &quot;{testimonials[currentTestimonial].content}&quot;
+                  &quot;{testimonials[currentTestimonial].content}&quot;
                 </blockquote>
               </motion.div>
             </AnimatePresence>
-            
+
             <div className="flex justify-center mt-8 gap-4">
-              <button 
+              <button
                 onClick={prevTestimonial}
                 className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-gray-50 transition border border-gray-100"
               >
                 <ChevronLeft className="text-gray-700" size={24} />
               </button>
-              
+
               <div className="flex items-center gap-2">
                 {testimonials.map((_, index) => (
                   <button
@@ -371,8 +375,8 @@ export default function AppDownloadPage() {
                   />
                 ))}
               </div>
-              
-              <button 
+
+              <button
                 onClick={nextTestimonial}
                 className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-gray-50 transition border border-gray-100"
               >
@@ -382,12 +386,12 @@ export default function AppDownloadPage() {
           </div>
         </div>
       </section>
-      
+
       {/* FAQ Section */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <motion.h2 
+            <motion.h2
               className="text-3xl md:text-4xl font-bold text-gray-900"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -396,7 +400,7 @@ export default function AppDownloadPage() {
             >
               {t('faq.title')}
             </motion.h2>
-            <motion.p 
+            <motion.p
               className="mt-4 text-lg text-gray-600"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -406,10 +410,10 @@ export default function AppDownloadPage() {
               {t('faq.subtitle')}
             </motion.p>
           </div>
-          
+
           <div className="max-w-3xl mx-auto">
             {faqs.map((faq, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 className="mb-4 border border-gray-200 rounded-xl overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
@@ -422,12 +426,12 @@ export default function AppDownloadPage() {
                   onClick={() => toggleFAQ(index)}
                 >
                   <span className="font-medium text-lg text-gray-900">{faq.question}</span>
-                  <ChevronDown 
-                    className={`transition-transform text-gray-500 ${openIndex === index ? 'rotate-180' : ''}`} 
-                    size={24} 
+                  <ChevronDown
+                    className={`transition-transform text-gray-500 ${openIndex === index ? 'rotate-180' : ''}`}
+                    size={24}
                   />
                 </button>
-                
+
                 <AnimatePresence>
                   {openIndex === index && (
                     <motion.div
@@ -447,9 +451,10 @@ export default function AppDownloadPage() {
           </div>
         </div>
       </section>
-      
+
+
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-teal-600 to-teal-700">
+      <section className="py-16 md:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
@@ -457,14 +462,14 @@ export default function AppDownloadPage() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-lg"
+              className="bg-white backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-lg"
             >
               <div className="inline-flex items-center justify-center bg-teal-500/20 p-4 rounded-full mb-6">
                 <Smartphone className="text-white" size={48} />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">{t('cta.title')}</h2>
-              <p className="text-xl text-teal-100 mb-10 max-w-2xl mx-auto">{t('cta.subtitle')}</p>
-              
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{t('cta.title')}</h2>
+              <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">{t('cta.subtitle')}</p>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button className="bg-gray-900 text-white px-8 py-4 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-800 transition shadow-md hover:shadow-lg">
                   <Apple size={24} />
@@ -473,7 +478,7 @@ export default function AppDownloadPage() {
                     <div className="text-lg font-bold">App Store</div>
                   </div>
                 </button>
-                <button className="bg-white text-gray-900 px-8 py-4 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-50 transition shadow-md hover:shadow-lg">
+                <button className="bg-white cursor-pointer text-gray-900 px-8 py-4 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-50 transition shadow-md hover:shadow-lg">
                   <Play size={24} />
                   <div className="text-left">
                     <div className="text-xs text-gray-600">GET IT ON</div>
@@ -481,8 +486,8 @@ export default function AppDownloadPage() {
                   </div>
                 </button>
               </div>
-              
-              <div className="mt-8 text-teal-100 text-sm">
+
+              <div className="mt-8 text-gray-500 text-sm">
                 {t('cta.note')}
               </div>
             </motion.div>

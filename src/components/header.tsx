@@ -24,16 +24,16 @@ const Header = () => {
                         <span>{t("Logo")}</span>
                     </Link>
                     <div className="nav-links hidden lg:flex gap-8">
-                        <Link href="" className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
+                        <Link href={`/${lang}/`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
                             {t("Home")}
                         </Link>
-                        <Link href="" className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
+                        <Link href={`/${lang}/`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
                             {t("Flight")}
                         </Link>
-                        <Link href="" className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
+                        <Link href={`/${lang}/`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
                             {t("Hotel")}
                         </Link>
-                        <Link href="" className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
+                        <Link href={`/${lang}/`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
                             {t("FeaturedDeals")}
                         </Link>
                         <Link href={`/${lang}/mobile-app`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">

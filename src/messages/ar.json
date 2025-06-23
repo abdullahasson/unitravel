@@ -56,6 +56,10 @@
     }
   },
   "SearchFlightsComponent": {
+    "Location": {
+      "Origin": "البلد الحالي",
+      "Destination": "اختر بلد الهجرة" 
+    },
     "TripType": {
       "One": "ذهاب فقط",
       "Return": "ذهاب وعودة"
@@ -84,6 +88,10 @@
         "Text": "أطفال",
         "EX": "أقل من 2 سنة"
       }
+    },
+    "Date": {
+      "Departure": "المغادرة",
+      "Return": "العودة"
     },
     "SortBy": {
       "Title": "ترتيب حسب",
@@ -207,10 +215,10 @@
     "QuickLinks": {
       "Title": "روابط سريعة",
       "Home": "الرئيسية",
-      "Flight": "عروض الطيران",
-      "Hotel": "عروض الفنادق",
+      "Flight": "رحلات الطيران",
+      "Hotel": "رحلات الفنادق",
       "FeaturedDeals": "عروض خاصة",
-      "Contact": "اتصل بنا"
+      "Contact": "التطبيق"
     },
     "PopularDestinations": {
       "Title": "وجهات شعبية",

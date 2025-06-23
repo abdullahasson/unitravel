@@ -1,7 +1,7 @@
 // Next
 import Link from "next/link";
 // Next Intl
-import { useTranslations } from "next-intl"
+import { useTranslations , useLocale } from "next-intl"
 // Icons 
 import {
     Facebook ,
@@ -17,6 +17,7 @@ import {
 const Footer = () => {
 
     const t = useTranslations("Footer")
+    const lang = useLocale()
 
     return (
         <footer className="relative pt-22 pb-10 bg-[var(--color-darker)] text-white overflow-hidden">
@@ -28,16 +29,16 @@ const Footer = () => {
                         <p className="mb-5">{t("AboutUs.Text")}</p>
 
                         <div className="social-links flex gap-4">
-                            <Link href="#" className="social-link w-11 h-11 rounded-full flex items-center justify-center bg-white/10 text-white text-lg transition-all duration-400">
+                            <Link href={`/${lang}/`} className="social-link w-11 h-11 rounded-full flex items-center justify-center bg-white/10 text-white text-lg transition-all duration-400">
                                 <Facebook />
                             </Link>
-                            <Link href="#" className="social-link w-11 h-11 rounded-full flex items-center justify-center bg-white/10 text-white text-lg transition-all duration-400">
+                            <Link href={`/${lang}/`} className="social-link w-11 h-11 rounded-full flex items-center justify-center bg-white/10 text-white text-lg transition-all duration-400">
                                 <Twitter />
                             </Link>
-                            <Link href="#" className="social-link w-11 h-11 rounded-full flex items-center justify-center bg-white/10 text-white text-lg transition-all duration-400">
+                            <Link href={`/${lang}/`} className="social-link w-11 h-11 rounded-full flex items-center justify-center bg-white/10 text-white text-lg transition-all duration-400">
                                 <Instagram />
                             </Link>
-                            <Link href="#" className="social-link w-11 h-11 rounded-full flex items-center justify-center bg-white/10 text-white text-lg transition-all duration-400">
+                            <Link href={`/${lang}/`} className="social-link w-11 h-11 rounded-full flex items-center justify-center bg-white/10 text-white text-lg transition-all duration-400">
                                 <Youtube />
                             </Link>
                         </div>
@@ -46,35 +47,35 @@ const Footer = () => {
                         <h3 className="text-xl mb-6 pb-3 relative">{t("QuickLinks.Title")}</h3>
                         <ul className="footer-links">
                             <li className="mb-4">
-                                <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
+                                <Link href={`/${lang}/`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
                                     
                                     <ChevronLeft className="text-[var(--color-accent))]" />
                                     {t("QuickLinks.Home")}
                                 </Link>
                             </li>
                             <li className="mb-4">
-                                <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
+                                <Link href={`/${lang}/`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
                                     
                                     <ChevronLeft className="text-[var(--color-accent))]" />
                                     {t("QuickLinks.Flight")}
                                 </Link>
                             </li>
                             <li className="mb-4">
-                                <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
+                                <Link href={`/${lang}/`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
                                     
                                     <ChevronLeft className="text-[var(--color-accent))]" />
                                     {t("QuickLinks.Hotel")}
                                 </Link>
                             </li>
                             <li className="mb-4">
-                                <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
+                                <Link href={`/${lang}/`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
                                     
                                     <ChevronLeft className="text-[var(--color-accent))]" />
                                     {t("QuickLinks.FeaturedDeals")}
                                 </Link>
                             </li>
                             <li>
-                                <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
+                                <Link href={`/${lang}/`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
                                     
                                     <ChevronLeft className="text-[var(--color-accent))]" />
                                     {t("QuickLinks.Contact")}
@@ -86,31 +87,31 @@ const Footer = () => {
                         <h3 className="text-xl mb-6 pb-3 relative">{t("PopularDestinations.Title")}</h3>
                         <ul className="footer-links">
                             <li className="mb-4">
-                                <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
+                                <Link href={`/${lang}/`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
                                     <Map className="text-[var(--color-accent)]" />
                                     {t("PopularDestinations.c1")}
                                 </Link>
                             </li>
                             <li className="mb-4">
-                                <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
+                                <Link href={`/${lang}/`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
                                     <Map className="text-[var(--color-accent)]" />
                                     {t("PopularDestinations.c2")}
                                 </Link>
                             </li>
                             <li className="mb-4">
-                                <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
+                                <Link href={`/${lang}/`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
                                     <Map className="text-[var(--color-accent)]" />
                                     {t("PopularDestinations.c3")}
                                 </Link>
                             </li>
                             <li className="mb-4">
-                                <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
+                                <Link href={`/${lang}/`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
                                     <Map className="text-[var(--color-accent)]" />
                                     {t("PopularDestinations.c4")}
                                 </Link>
                             </li>
                             <li>
-                                <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
+                                <Link href={`/${lang}/`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
                                     <Map className="text-[var(--color-accent)]" />
                                     {t("PopularDestinations.c5")}
                                 </Link>
@@ -121,19 +122,19 @@ const Footer = () => {
                         <h3 className="text-xl mb-6 pb-3 relative">{t("ContactUs.Title")}</h3>
                         <ul className="footer-links">
                             <li className="mb-4">
-                                <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
+                                <Link href={`/${lang}/`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
                                     <MessageCircleReply className="text-[var(--color-accent)]" />
                                     info@rahhalati.com
                                 </Link>
                             </li>
                             <li className="mb-4">
-                                <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
+                                <Link href={`/${lang}/`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
                                     <Phone className="text-[var(--color-accent)]" />
                                     +966 123 456 789
                                 </Link>
                             </li>
                             <li>
-                                <Link href="#" className="text-slate-300 flex items-center gap-2 transition-all duration-400">
+                                <Link href={`/${lang}/`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
                                     <Map className="text-[var(--color-accent)]" />
                                     {t("ContactUs.Location")}
                                 </Link>

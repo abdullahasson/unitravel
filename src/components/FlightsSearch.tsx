@@ -4,17 +4,16 @@
 import { useState, useEffect, useCallback } from 'react';
 // Next Intl
 import { useTranslations } from "next-intl";
-// React Library
-import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
 // Components
 import FlightList from "./FlightList"
 import FlightsError from './FlightsError';
+// UI
+import Select from './ui/select';
+import UiDatePicker from './ui/datepicker';
 // Data
-import { AirportInfo , AIRPORTSARRAY } from "@/constants/data"
+import { AIRPORTSARRAY } from "@/constants/data"
 // Icons
 import {
-  CalendarDays,
   ArrowRightLeft,
   User,
   ChevronDown,
@@ -132,14 +131,14 @@ export default function FlightsSearch() {
       setLoading(false);
     }
   }, [
-    origin, 
-    destination, 
-    departureDate, 
-    tripType, 
-    returnDate, 
-    directOnly, 
-    sortBy, 
-    currency, 
+    origin,
+    destination,
+    departureDate,
+    tripType,
+    returnDate,
+    directOnly,
+    sortBy,
+    currency,
     passengers
   ]);
 
@@ -170,22 +169,16 @@ export default function FlightsSearch() {
           {/* Location Inputs */}
           <div className="md:col-span-12 flex items-center space-x-3">
             <div className="flex-1 relative">
-              <select
+              <Select
+                options={AIRPORTSARRAY.map(airport => ({
+                  value: airport.code.toUpperCase(),
+                  label: `${airport.country.ar} - ${airport.city.ar} - ${airport.name.ar}`
+                }))}
                 value={origin}
-                onChange={(e) => setOrigin(e.target.value.toUpperCase())}
-                className="w-full p-4 pl-12 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent text-lg shadow-sm transition-all"
-              >
-                {AIRPORTSARRAY.map((airport : AirportInfo) => (
-                  <option key={airport.code} value={airport.code}>
-                    {airport.country.ar} -
-                    {airport.city.ar} -
-                    {airport.name.ar}
-                  </option>
-                ))}
-              </select>
-              <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                <ChevronDown size={16} className="text-gray-400" />
-              </div>
+                onChange={(value) => setOrigin(value)}
+                placeholder="Select origin"
+                className="text-lg"
+              />
             </div>
 
             <button
@@ -197,22 +190,16 @@ export default function FlightsSearch() {
             </button>
 
             <div className="flex-1 relative">
-              <select
+              <Select
+                options={AIRPORTSARRAY.map(airport => ({
+                  value: airport.code.toUpperCase(),
+                  label: `${airport.country.ar} - ${airport.city.ar} - ${airport.name.ar}`
+                }))}
                 value={destination}
-                onChange={(e) => setDestination(e.target.value.toUpperCase())}
-                className="w-full p-4 pl-12 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent text-lg shadow-sm transition-all"
-              >
-                {AIRPORTSARRAY.map((airport : AirportInfo) => (
-                  <option key={airport.code} value={airport.code}>
-                    {airport.country.ar} -
-                    {airport.city.ar} -
-                    {airport.name.ar}
-                  </option>
-                ))}
-              </select>
-              <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                <ChevronDown size={16} className="text-gray-400" />
-              </div>
+                onChange={(value) => setDestination(value)}
+                placeholder="Select destination"
+                className="text-lg"
+              />
             </div>
           </div>
 
@@ -241,32 +228,26 @@ export default function FlightsSearch() {
           </div>
 
           {/* Date Pickers */}
-          <div className="md:col-span-6 grid gap-3">
-            <div className="col-span-1 relative">
-              <DatePicker
+          <div className="md:col-span-6 flex gap-3">
+            <div className="flex-1 relative">
+              <UiDatePicker
                 selected={departureDate}
                 onChange={setDepartureDate}
                 minDate={new Date()}
-                className="w-full p-4 pl-12 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent text-lg shadow-sm"
-                placeholderText="Departure"
+                placeholderText={t("Date.Departure")}
+                className="w-full"
               />
-              <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                <CalendarDays className="text-blue-500" size={20} />
-              </div>
             </div>
 
             {tripType === 'round-trip' && (
-              <div className="col-span-1 relative">
-                <DatePicker
+              <div className="flex-1 relative">
+                <UiDatePicker
                   selected={returnDate}
                   onChange={setReturnDate}
                   minDate={departureDate || new Date()}
-                  className="w-full p-4 pl-12 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent text-lg shadow-sm"
-                  placeholderText="Return"
+                  placeholderText={t("Date.Return")}
+                  className="w-full"
                 />
-                <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                  <CalendarDays className="text-blue-500" size={20} />
-                </div>
               </div>
             )}
           </div>
@@ -293,20 +274,18 @@ export default function FlightsSearch() {
                 <div className="border border-gray-200 rounded-xl p-4 bg-white shadow-sm">
                   <label className="block text-sm font-medium text-gray-700 mb-2">{t("Currency")}</label>
                   <div className="relative">
-                    <select
+                    <Select
+                      options={[
+                        { value: 'USD', label: 'USD ($)' },
+                        { value: 'EUR', label: 'EUR (€)' },
+                        { value: 'GBP', label: 'GBP (£)' },
+                        { value: 'SGD', label: 'SGD (S$)' },
+                        { value: 'THB', label: 'THB (฿)' },
+                      ]}
                       value={currency}
-                      onChange={(e) => setCurrency(e.target.value)}
-                      className="w-full p-3 pl-4 pr-10 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent appearance-none bg-white"
-                    >
-                      <option value="USD">USD ($)</option>
-                      <option value="EUR">EUR (€)</option>
-                      <option value="GBP">GBP (£)</option>
-                      <option value="SGD">SGD (S$)</option>
-                      <option value="THB">THB (฿)</option>
-                    </select>
-                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                      <ChevronDown size={16} className="text-gray-400" />
-                    </div>
+                      onChange={setCurrency}
+                      placeholder="Select currency"
+                    />
                   </div>
                 </div>
               </div>
@@ -316,18 +295,16 @@ export default function FlightsSearch() {
                 <div className="border border-gray-200 rounded-xl p-4 bg-white shadow-sm">
                   <label className="block text-sm font-medium text-gray-700 mb-2">{t("SortBy.Title")}</label>
                   <div className="relative">
-                    <select
+                    <Select
+                      options={[
+                        { value: 'price', label: t("SortBy.Price") },
+                        { value: 'duration', label: t("SortBy.Duration") },
+                        { value: 'departure', label: t("SortBy.Departure") },
+                      ]}
                       value={sortBy}
-                      onChange={(e) => setSortBy(e.target.value as 'price' | 'duration' | 'departure')}
-                      className="w-full p-3 pl-4 pr-10 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent appearance-none bg-white"
-                    >
-                      <option value="price">{t("SortBy.Price")}</option>
-                      <option value="duration">{t("SortBy.Duration")}</option>
-                      <option value="departure">{t("SortBy.Departure")}</option>
-                    </select>
-                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                      <ChevronDown size={16} className="text-gray-400" />
-                    </div>
+                      onChange={(value) => setSortBy(value as 'price' | 'duration' | 'departure')}
+                      placeholder={"Sort by"}
+                    />
                   </div>
                 </div>
               </div>
