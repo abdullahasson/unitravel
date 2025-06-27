@@ -54,14 +54,14 @@ const Footer = () => {
                                 </Link>
                             </li>
                             <li className="mb-4">
-                                <Link href={`/${lang}/`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
+                                <Link href={`/${lang}/flights`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
                                     
                                     <ChevronLeft className="text-[var(--color-accent))]" />
                                     {t("QuickLinks.Flight")}
                                 </Link>
                             </li>
                             <li className="mb-4">
-                                <Link href={`/${lang}/`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
+                                <Link href={`/${lang}/hotels`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
                                     
                                     <ChevronLeft className="text-[var(--color-accent))]" />
                                     {t("QuickLinks.Hotel")}
@@ -75,7 +75,7 @@ const Footer = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href={`/${lang}/`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
+                                <Link href={`/${lang}/mobile-app`} className="text-slate-300 flex items-center gap-2 transition-all duration-400">
                                     
                                     <ChevronLeft className="text-[var(--color-accent))]" />
                                     {t("QuickLinks.Contact")}

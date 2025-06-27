@@ -27,13 +27,13 @@ const Header = () => {
                         <Link href={`/${lang}/`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
                             {t("Home")}
                         </Link>
-                        <Link href={`/${lang}/`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
+                        <Link href={`/${lang}/flights`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
                             {t("Flight")}
                         </Link>
-                        <Link href={`/${lang}/`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
+                        <Link href={`/${lang}/hotels`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
                             {t("Hotel")}
                         </Link>
-                        <Link href={`/${lang}/`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
+                        <Link href={`/${lang}/deals`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
                             {t("FeaturedDeals")}
                         </Link>
                         <Link href={`/${lang}/mobile-app`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
@@ -46,15 +46,7 @@ const Header = () => {
                         {/* تبديل اللغة - نسخة سطح المكتب */}
                         <SwitchLanguages />
 
-                        {/* أزرار المستخدم */}
-                        <div className="user-actions flex gap-4">
-                            <Link href="" className="btn btn-outline border-2 border-[var(--color-primary)] text-[var(--color-primary)] bg-transparent py-3 px-6 rounded-full font-semibold text-base transition-all duration-400">
-                                {t("Login")}
-                            </Link>
-                            <Link href="" className="btn btn-[var(--color-primary)] bg-linear-0 from-[var(--color-primary)] to-[var(--color-secondary)] text-white py-3 px-6 rounded-full font-semibold text-base shadow-md shadow-blue-500/20 transition-all duration-400">
-                                {t("Signup")}
-                            </Link>
-                        </div>
+                    
                         {/* قائمة الهامبرجر للجوال */}
                         <button className="md:hidden text-2xl text-gray-700">
                             <i className="fas fa-bars" />

@@ -15,6 +15,22 @@
         "JoinPartner": "Join as a Partner",
         "BrowseOffers": "Browse offers"
     },
+    "WhyUs": {
+      "title" : "Why Choose Us",
+      "subtitle" : "We make travel planning simple and affordable with our powerful tools and exclusive deals",
+      "card1": {
+        "title": "Best Price Guarantee",
+        "text": "We guarantee the best prices for flights and hotels. Found a lower price? We'll match it."
+      },
+      "card2": {
+        "title": "Secure Booking",
+        "text": "Your personal and payment information is protected with bank-level security."
+      },
+      "card3": {
+        "title": "24/7 Support",
+        "text": "Our travel experts are available around the clock to assist with your bookings."
+      }
+    },
     "MobileApp": {
         "Badge": "New experience",
         "Heading": "Download the Rahlaty app and book your trip in minutes",
@@ -193,5 +209,148 @@
         "subtitle": "Download the app today and get $20 off your first booking!",
         "note": "App available in both English and Arabic languages"
       }
+    },
+    "HotelSearch": {
+      "title": "Find Your Perfect Stay",
+      "subtitle": "Compare prices and find the best deals for your trip",
+      "location": "Destination",
+      "checkIn": "Check-in",
+      "checkOut": "Check-out",
+      "rooms": "Rooms",
+      "guests": "Guests",
+      "selectLocation": "Select destination",
+      "selectDate": "Select date",
+      "search": "Search Hotels",
+      "searching": "Searching",
+      "night": "night",
+      "viewDeal": "View Deal",
+      "emptyTitle": "Find Amazing Hotel Deals",
+      "emptyDescription": "Search for hotels to compare prices and find the best deals for your trip",
+      "loading": "Finding the best deals for you...",
+      "locations": {
+        "dubai": "Dubai, UAE",
+        "paris": "Paris, France",
+        "newYork": "New York, USA",
+        "tokyo": "Tokyo, Japan",
+        "bali": "Bali, Indonesia"
+      },
+      "hotels": {
+        "luxuryResort": "Luxury Beach Resort",
+        "cityViewHotel": "City View Hotel",
+        "beachParadise": "Beach Paradise Resort",
+        "businessInn": "Business Inn",
+        "mountainRetreat": "Mountain Retreat Lodge"
+      },
+      "amenities": {
+        "pool": "Swimming Pool",
+        "spa": "Spa & Wellness",
+        "wifi": "Free WiFi",
+        "breakfast": "Breakfast Included",
+        "gym": "Fitness Center"
+      },
+      "filters": "Filters",
+      "sortBy": "Sort by",
+      "recommended": "Recommended",
+      "priceLow": "Price (Low to High)",
+      "priceHigh": "Price (High to Low)",
+      "rating": "Rating",
+      "priceRange": "Price Range",
+      "hotelRating": "Hotel Rating",
+      "amenitie": "Amenities",
+      "otherFilters": "Other Filters",
+      "freeCancel": "Free Cancellation",
+      "breakfastIncluded": "Breakfast Included",
+      "swimmingPool": "Swimming Pool",
+      "reviews": "reviews",
+      "includesTaxes": "Includes taxes & fees"
+    },
+
+
+    "FlightPage": {
+      "title": "Find Cheap Flights & Hotel Deals",
+      "subtitle": "Search, compare, and save on flights and hotels",
+      "from": "From",
+      "to": "To",
+      "departure": "Departure",
+      "return": "Return",
+      "passengers": "Passengers",
+      "class": "Class",
+      "search": "Search Flights",
+      "oneWay": "One-way",
+      "roundTrip": "Round-trip",
+      "economy": "Economy",
+      "business": "Business",
+      "first": "First",
+      "adults": "Adults",
+      "children": "Children",
+      "infants": "Infants"
+    },
+
+    "HotelsPage": {
+      "Hotels": "Hotels",
+      "Search": "Search",
+      "WhereTo": "Where are you going?",
+      "CheckIn": "Check-in",
+      "CheckOut": "Check-out",
+      "RoomsGuests": "Rooms & Guests",
+      "Rooms": "Rooms",
+      "Adults": "Adults",
+      "Children": "Children",
+      "SearchHotels": "Search Hotels",
+      "Loading": "Loading...",
+      "SortBy": "Sort by",
+      "PriceHighLow": "Price (high to low)",
+      "PriceLowHigh": "Price (low to high)",
+      "Rating": "Rating",
+      "Name": "Name",
+      "NoResults": "No hotels found",
+      "PerNight": "/night",
+      "BookNow": "Book Now",
+      "Features": "Features",
+      "FreeWifi": "Free WiFi",
+      "Pool": "Pool",
+      "Gym": "Gym",
+      "Breakfast": "Breakfast Included",
+      "Recommended": "Recommended",
+      "TryDifferentDates": "Try different dates or location",
+      "ResultsCount": "{count} hotels found",
+      "CurrentLocation": "current location",
+      "Filters": "Filters",
+      "Distance": "Distance",
+      "ResetAll": "Reset all",
+      "PriceRange": "Price Range",
+      "Cancellation": "Cancellation",
+      "FreeCancellation": "Free cancellation",
+      "Amenities": "Amenities",
+      "Hotel": "Hotel",
+      "PricePerNight": "Price per night",
+      "kmFromCenter": "km from center",
+      "reviews": "reviews",
+      "LessDetails": "Less details",
+      "MoreDetails": "More details",
+      "RoomOptions": "Room Options",
+      "StandardRoom": "Standard Room",
+      "DeluxeRoom": "Deluxe Room",
+      "BreakfastIncluded": "Breakfast included",
+      "OceanView": "Ocean view",
+      "Provider": "Provider",
+      "ViewDetails": "View details",
+      "Facilities": "Facilities",
+      "Restaurant": "Restaurant",
+      "Spa": "Spa",
+      "Parking": "Parking",
+      "Location": "Location",
+      "DistanceFromCenter": "{distance} km from city center",
+      "ViewOnMap": "View on map",
+      "Previous": "Previous",
+      "Next": "Next",
+      "TryDifferentFilters": "Try different search criteria or filters",
+      "ResetFilters": "Reset all filters"
+    } ,
+
+    "FlightDealsCarousel": {
+      "bookNow": "Book Now",
+      "tryAgain": "Try Again"
     }
+
 }

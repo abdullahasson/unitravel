@@ -95,12 +95,12 @@ export default function FlightList({
                       <Plane size={24} className="text-blue-600" />
                     </div>
                     <div>
-                      <div className="flex items-center">
+                      <div className="flex items-center relative">
                         <div className="font-bold text-2xl text-gray-900">
                           {formatPrice(flight.price)}
                         </div>
                         {flight.transfers === 0 && (
-                          <span className="ml-3 bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">
+                          <span className="absolute top-1 -left-14 ml-3 bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">
                             {t('direct')}
                           </span>
                         )}

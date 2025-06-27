@@ -1,15 +1,15 @@
-// Next Inlt
 // Section
 import Hero from "./_section/hero"
 // Components
-import FlightSearch from "@/components/FlightsSearch"
+import Search from "@/components/Search";
 
 export default function Home() {
-  // <FlightSearch />
   return (
     <div>
       <Hero />
-      <FlightSearch />
+      <Search  />
+      {/*<Deals /> */}
+      {/* <FlightDealsCarousel /> */}
     </div>
   );
 }
