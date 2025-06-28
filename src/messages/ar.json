@@ -31,13 +31,28 @@
       "text": "خبراء السفر لدينا متاحون 24/7 لمساعدتك في جميع حجوزاتك واستفساراتك."
     }
   },
-  "Deals" : {
-    "title": "Deals",
-    "subtitle": "Get the best deals on flights, hotels, and rental cars.",
+  "Deals": {
+    "title": "عروض سفر مميزة",
+    "subtitle": "اكتشف خصومات مذهلة على الرحلات الجوية والفنادق إلى الوجهات الشهيرة",
     "tabs" : {
-      "flightDeals": "Flight Deals",
-      "hotelDeals": "Hotel Deals",  
-      "packageDeals": "Package Deals"
+      "flights": "عروض الرحلات",
+      "hotels": "عروض الفنادق"
+    }
+  },
+  "Insights": {
+    "title": "رؤى السفر",
+    "subtitle": "رؤى مبنية على البيانات لمساعدتك على التخطيط بشكل أفضل وتوفير المزيد في رحلاتك",
+    "card1": {
+      "title": "رضا العملاء"
+    },
+    "card2": {
+      "title": "فنادق حول العالم"
+    },
+    "card3": {
+      "title": "أنقذها المسافرون"
+    },
+    "card4": {
+      "title": "عدد المسافرين المحجوزين"
     }
   },
   "MobileApp": {
