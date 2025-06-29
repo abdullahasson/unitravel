@@ -12,7 +12,7 @@ export default function WhyUs() {
     const t = useTranslations("WhyUs");
 
     return (
-        <section className="pb-24 px-4 sm:px-6 lg:px-8">
+        <section className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
             {/* Static fallback while loading */}
             <div className="text-center mb-16 max-w-3xl mx-auto">

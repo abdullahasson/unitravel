@@ -5,47 +5,52 @@ import { useTranslations , useLocale } from "next-intl";
 // Components
 import SwitchLanguages from "./switch-languages"
 // Icons
-import {
-    Plane
-} from "lucide-react"
-
+import { Plane } from "lucide-react"
 
 const Header = () => {
     // Translate
     const t = useTranslations("Header");
     const lang = useLocale();
 
+    // Navigation links configuration
+    const navLinks = [
+        { href: "/", path: '/', label: t("Home") },
+        { href: "/flights", path: '/flights', label: t("Flight") },
+        { href: "/hotels", path: '/hotels', label: t("Hotel") },
+        { href: "/deals", path: '/deals', label: t("FeaturedDeals") },
+        { href: "/mobile-app", path: '/mobile-app', label: t("App") },
+    ];
+
     return (
         <header id="header" className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-white/95 shadow-md transition-all duration-400">
             <div className="container mx-auto px-4 xl:px-0 max-w-7xl">
                 <div className="navbar flex justify-between items-center py-4 transition-all duration-400">
-                    <Link href="" className="logo flex items-center gap-2 text-2xl font-extrabold text-darker transition-all duration-400">
+                    <Link href={`/${lang}/`} className="logo flex items-center gap-2 text-2xl font-extrabold text-darker transition-all duration-400">
                         <Plane className="text-[var(--color-primary)] transition-all duration-400" />
                         <span>{t("Logo")}</span>
                     </Link>
+                    
                     <div className="nav-links hidden lg:flex gap-8">
-                        <Link href={`/${lang}/`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
-                            {t("Home")}
-                        </Link>
-                        <Link href={`/${lang}/flights`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
-                            {t("Flight")}
-                        </Link>
-                        <Link href={`/${lang}/hotels`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
-                            {t("Hotel")}
-                        </Link>
-                        <Link href={`/${lang}/deals`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
-                            {t("FeaturedDeals")}
-                        </Link>
-                        <Link href={`/${lang}/mobile-app`} className="nav-link relative py-2 text-darker font-medium text-lg transition-all duration-400">
-                            {t("App")}
-                        </Link>
+                        {navLinks.map((link) => {
+                            return (
+                                <Link
+                                    key={link.path}
+                                    href={`/${lang}${link.href}`}
+                                    className={`
+                                        nav-link 
+                                        ${false ? "active" : ""}
+                                        relative py-2 text-darker font-medium text-lg transition-all duration-400
+                                    `}
+                                >
+                                    {link.label}
+                                </Link>
+                            );
+                        })}
                     </div>
-
 
                     <div className="flex items-center gap-6">
                         {/* تبديل اللغة - نسخة سطح المكتب */}
                         <SwitchLanguages />
-
                     
                         {/* قائمة الهامبرجر للجوال */}
                         <button className="md:hidden text-2xl text-gray-700">
