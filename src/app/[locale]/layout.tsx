@@ -11,7 +11,7 @@ import { routing } from '@/i18n/routing';
 // Components
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import Contact from "@/components/contact";
+// import Contact from "@/components/contact";
 // Styles
 import "../globals.css";
 
@@ -86,7 +86,7 @@ export default async function RootLayout({
             <Header />
             {children}
             <Footer />
-            <Contact />
+            {/* <Contact /> */}
           </>
         </NextIntlClientProvider>
       </body>

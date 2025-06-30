@@ -22,7 +22,7 @@ const Search = () => {
     }
 
     return (
-        <div className="-translate-y-40">
+        <div>
             <div className="flex justify-center gap-5 mb-8 opacity-0 translate-y-5 animate-fadeInUp" style={{ animationDelay: '0.6s' }}>
                 <button
                     onClick={() => handleFlights()}

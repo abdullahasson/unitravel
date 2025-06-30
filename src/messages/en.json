@@ -96,6 +96,30 @@
       "title": "Travelers Who Benefited from Offers"
     }
   },
+  "ArticlesCarousel": {
+    "title": "Latest Articles",
+    "seeMore": "See More Articles",
+    "readArticle": "Read Article"
+  },
+  "PopularAirlines": {
+    "title": "Popular Airlines in the USA",
+    "subtitle": "Book Cheap Flights on Your Favorite Airlines"
+  },
+  "TripIdeas": {
+    "title": "Ideas for a trip from the United States of America",
+    "subtitle": "Discover your perfect getaway with our curated travel recommendations",
+    "tabs": {
+      "romantic": "Romantic Getaways",
+      "cultural": "Cultural Experiences",
+      "beach": "Beach Destinations",
+      "family": "Family Friendly",
+      "nature": "Nature & Adventure",
+      "forTrips": "For Trips"
+    },
+    "card": {
+      "roundTrip": "Round Trip"
+    }
+  },
   "MobileApp": {
     "Badge": "New Experience",
     "Heading": "Download the Hotlino app and book your trip in minutes",
