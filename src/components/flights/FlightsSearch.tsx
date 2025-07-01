@@ -1,18 +1,13 @@
 'use client';
 
-// React 
 import { useState, useEffect, useCallback } from 'react';
-// Next Intl
+import { useSearchParams } from 'next/navigation';
 import { useTranslations } from "next-intl";
-// Components
-import FlightList from "./FlightList"
+import FlightList from "./FlightList";
 import FlightsError from './FlightsError';
-// UI
 import Select from '../ui/select';
 import UiDatePicker from '../ui/datepicker';
-// Data
-import { AIRPORTSARRAY } from "@/constants/data"
-// Icons
+import { AIRPORTSARRAY } from "@/constants/data";
 import {
   ArrowRightLeft,
   User,
@@ -27,60 +22,181 @@ import {
   XCircle
 } from 'lucide-react';
 
-// Define flight data structure
+// Types
 interface FlightData {
   flight_number: string;
   link: string;
   origin_airport: string;
   destination_airport: string;
-  departure_at: string; // ISO 8601 format
+  departure_at: string;
   airline: string;
   destination: string;
   origin: string;
   price: number;
   return_transfers: number;
-  duration: number; // in minutes
+  duration: number;
   duration_to: number;
   duration_back: number;
   transfers: number;
 }
 
-export default function FlightsSearch() {
-  // Translations
-  const t = useTranslations("SearchFlightsComponent")
+interface PassengerCounts {
+  adults: number;
+  children: number;
+  infants: number;
+}
 
-  // Search parameters state
+interface PassengerTypeConfig {
+  text: string;
+  ex: string;
+}
+
+// Define valid sortBy types
+type SortByType = 'price' | 'duration' | 'departure';
+
+// Passenger Selector Component
+const PassengerSelector = ({ 
+  passengers, 
+  onChange,
+  onClose 
+}: { 
+  passengers: PassengerCounts; 
+  onChange: (newPassengers: PassengerCounts) => void;
+  onClose: () => void;
+}) => {
+  const t = useTranslations("SearchFlightsComponent");
+
+  const handleChange = (type: keyof PassengerCounts, delta: number) => {
+    const newValue = Math.max(0, passengers[type] + delta);
+    
+    // Apply infant limit (max 1 infant per adult)
+    if (type === 'infants' && newValue > passengers.adults) return;
+    
+    onChange({ ...passengers, [type]: newValue });
+  };
+
+  // Get passenger type configurations
+  const getPassengerTypeConfig = (): Record<keyof PassengerCounts, PassengerTypeConfig> => ({
+    adults: {
+      text: t("Passengers.Adults.Text"),
+      ex: t("Passengers.Adults.EX")
+    },
+    children: {
+      text: t("Passengers.Children.Text"),
+      ex: t("Passengers.Children.EX")
+    },
+    infants: {
+      text: t("Passengers.Infants.Text"),
+      ex: t("Passengers.Infants.EX")
+    }
+  });
+
+  const passengerConfig = getPassengerTypeConfig();
+
+  return (
+    <div className="absolute z-20 bg-white border border-gray-200 rounded-xl shadow-lg p-5 w-full mt-2 animate-fadeIn">
+      <div className="flex justify-between items-center mb-4 pb-2 border-b border-gray-100">
+        <h3 className="font-semibold text-gray-800">{t("Passengers.More")}</h3>
+        <button
+          onClick={onClose}
+          className="p-1 cursor-pointer rounded-full hover:bg-gray-100 transition-colors"
+          aria-label="Close passenger selector"
+        >
+          <X size={18} className="text-gray-500" />
+        </button>
+      </div>
+
+      <div className="space-y-4">
+        {(['adults', 'children', 'infants'] as const).map((type) => (
+          <div key={type} className="flex justify-between items-center">
+            <div>
+              <div className="font-medium text-gray-800">
+                {passengerConfig[type].text}
+              </div>
+              <div className="text-sm text-gray-500">
+                {passengerConfig[type].ex}
+              </div>
+            </div>
+            <div className="flex items-center space-x-3">
+              <button
+                className="w-9 h-9 cursor-pointer rounded-full border border-gray-200 flex items-center justify-center disabled:opacity-30 hover:bg-blue-50 transition-colors"
+                disabled={
+                  type === 'adults' ? passengers.adults <= 1 : 
+                  type === 'infants' ? passengers.infants <= 0 : passengers.children <= 0
+                }
+                onClick={() => handleChange(type, -1)}
+                aria-label={`Decrease ${type}`}
+              >
+                <Minus size={16} className="text-blue-500" />
+              </button>
+              <span className="font-medium w-6 text-center">{passengers[type]}</span>
+              <button
+                className="w-9 h-9 cursor-pointer rounded-full border border-gray-200 flex items-center justify-center hover:bg-blue-50 transition-colors disabled:opacity-30"
+                disabled={type === 'infants' && passengers.infants >= passengers.adults}
+                onClick={() => handleChange(type, 1)}
+                aria-label={`Increase ${type}`}
+              >
+                <Plus size={16} className="text-blue-500" />
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// Main Component
+export default function FlightsSearch() {
+  const searchParams = useSearchParams();
+  const t = useTranslations("SearchFlightsComponent");
+  
+  // State initialization
   const [flights, setFlights] = useState<FlightData[]>([]);
   const [loading, setLoading] = useState(false);
-  const [origin, setOrigin] = useState('LED');
-  const [destination, setDestination] = useState('HKT');
-  const [departureDate, setDepartureDate] = useState<Date | null>(new Date());
-  const [returnDate, setReturnDate] = useState<Date | null>(null);
-  const [tripType, setTripType] = useState<'one-way' | 'round-trip'>('one-way');
-  const [directOnly, setDirectOnly] = useState(false);
-  const [sortBy, setSortBy] = useState<'price' | 'duration' | 'departure'>('price');
-  const [currency, setCurrency] = useState('USD');
-  const [passengers, setPassengers] = useState({
-    adults: 1,
-    children: 0,
-    infants: 0
-  });
-  const [showAdvanced, setShowAdvanced] = useState(false);
-  const [showPassengerSelect, setShowPassengerSelect] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  
+  const [searchParamsState, setSearchParamsState] = useState({
+    origin: searchParams.get('origin') || 'USE',
+    destination: searchParams.get('destination') || 'HKT',
+    departureDate: searchParams.get('departureDate') ? new Date(searchParams.get('departureDate')!) : new Date(),
+    returnDate: searchParams.get('returnDate') ? new Date(searchParams.get('returnDate')!) : null,
+    tripType: (searchParams.get('tripType') || 'one-way') as 'one-way' | 'round-trip',
+    directOnly: false,
+    sortBy: (searchParams.get('sortBy') || 'price') as SortByType,
+    currency: searchParams.get('currency') || 'USD',
+    passengers: {
+      adults: parseInt(searchParams.get('passengers.adults') || '1') || 1,
+      children: parseInt(searchParams.get('passengers.children') || '0') || 0,
+      infants: parseInt(searchParams.get('passengers.infants') || '0') || 0
+    } as PassengerCounts,
+    showAdvanced: false,
+    showPassengerSelect: false
+  });
 
-  // Define search function with useCallback
+  // Search function
   const searchFlights = useCallback(async () => {
+    const {
+      origin,
+      destination,
+      departureDate,
+      returnDate,
+      tripType,
+      directOnly,
+      sortBy,
+      currency,
+      passengers
+    } = searchParamsState;
+
+    // Validation
     if (!origin || !destination) {
       setError('Please enter origin and destination');
       return;
     }
-
     if (!departureDate) {
       setError('Please select departure date');
       return;
     }
-
     if (tripType === 'round-trip' && !returnDate) {
       setError('Please select return date');
       return;
@@ -90,9 +206,7 @@ export default function FlightsSearch() {
     setLoading(true);
 
     try {
-      // Format dates to YYYY-MM-DD
       const formatDate = (date: Date) => date.toISOString().split('T')[0];
-
       const params = new URLSearchParams({
         origin,
         destination,
@@ -100,17 +214,15 @@ export default function FlightsSearch() {
         departure_date: formatDate(departureDate),
         direct: directOnly.toString(),
         sort: sortBy,
-        limit: '20'
+        limit: '20',
+        adults: passengers.adults.toString(),
+        children: passengers.children.toString(),
+        infants: passengers.infants.toString()
       });
 
       if (tripType === 'round-trip' && returnDate) {
         params.append('return_date', formatDate(returnDate));
       }
-
-      // Add passenger parameters
-      params.append('adults', passengers.adults.toString());
-      params.append('children', passengers.children.toString());
-      params.append('infants', passengers.infants.toString());
 
       const apiUrl = `/api/aviasales/aviasales/v3/prices_for_dates?${params.toString()}`;
       const res = await fetch(apiUrl);
@@ -130,36 +242,63 @@ export default function FlightsSearch() {
     } finally {
       setLoading(false);
     }
-  }, [
-    origin,
-    destination,
-    departureDate,
-    tripType,
-    returnDate,
-    directOnly,
-    sortBy,
-    currency,
-    passengers
-  ]);
+  }, [searchParamsState]);
 
-  // Fetch flights on initial load
+  // Initial search
   useEffect(() => {
     searchFlights();
   }, [searchFlights]);
 
-  const swapLocations = () => {
-    setOrigin(destination);
-    setDestination(origin);
+  // Handlers
+  const handleParamChange = <K extends keyof typeof searchParamsState>(
+    key: K, 
+    value: typeof searchParamsState[K]
+  ) => {
+    setSearchParamsState(prev => ({ ...prev, [key]: value }));
   };
 
-  const handlePassengerChange = (type: keyof typeof passengers, delta: number) => {
-    setPassengers(prev => ({
+  const swapLocations = () => {
+    setSearchParamsState(prev => ({
       ...prev,
-      [type]: Math.max(0, prev[type] + delta)
+      origin: prev.destination,
+      destination: prev.origin
     }));
   };
 
-  const totalPassengers = passengers.adults + passengers.children + passengers.infants;
+  const handlePassengerChange = (newPassengers: PassengerCounts) => {
+    handleParamChange('passengers', newPassengers);
+  };
+
+  // Calculate total passengers
+  const totalPassengers = searchParamsState.passengers.adults + 
+                          searchParamsState.passengers.children + 
+                          searchParamsState.passengers.infants;
+
+  const airportOptions = AIRPORTSARRAY.map(airport => ({
+    value: airport.code.toUpperCase(),
+    label: `${airport.country.ar} - ${airport.city.ar} - ${airport.name.ar}`
+  }));
+
+  // Get trip type labels
+  const getTripTypeLabels = () => ({
+    'one-way': t("TripType.One"),
+    'round-trip': t("TripType.Return")
+  });
+
+  // Get sort by options
+  const getSortByOptions = () => [
+    { value: 'price', label: t("SortBy.Price") },
+    { value: 'duration', label: t("SortBy.Duration") },
+    { value: 'departure', label: t("SortBy.Departure") }
+  ];
+
+  // Handle sortBy change with proper type
+  const handleSortByChange = (value: string) => {
+    // Validate value is a valid SortByType
+    if (value === 'price' || value === 'duration' || value === 'departure') {
+      handleParamChange('sortBy', value);
+    }
+  };
 
   return (
     <div className="max-w-6xl mx-auto p-4">
@@ -170,12 +309,9 @@ export default function FlightsSearch() {
           <div className="md:col-span-12 flex items-center space-x-3">
             <div className="flex-1 relative">
               <Select
-                options={AIRPORTSARRAY.map(airport => ({
-                  value: airport.code.toUpperCase(),
-                  label: `${airport.country.ar} - ${airport.city.ar} - ${airport.name.ar}`
-                }))}
-                value={origin}
-                onChange={(value) => setOrigin(value)}
+                options={airportOptions}
+                value={searchParamsState.origin}
+                onChange={value => handleParamChange('origin', value)}
                 placeholder="Select origin"
                 className="text-lg"
               />
@@ -183,7 +319,7 @@ export default function FlightsSearch() {
 
             <button
               onClick={swapLocations}
-              className="p-3 cursor-pointe bg-white border border-gray-200 hover:border-blue-400 hover:bg-blue-50 rounded-full transition-all duration-300 shadow-md"
+              className="p-3 bg-white border border-gray-200 hover:border-blue-400 hover:bg-blue-50 rounded-full transition-all duration-300 shadow-md"
               aria-label="Swap locations"
             >
               <ArrowRightLeft size={18} className="text-blue-500" />
@@ -191,12 +327,9 @@ export default function FlightsSearch() {
 
             <div className="flex-1 relative">
               <Select
-                options={AIRPORTSARRAY.map(airport => ({
-                  value: airport.code.toUpperCase(),
-                  label: `${airport.country.ar} - ${airport.city.ar} - ${airport.name.ar}`
-                }))}
-                value={destination}
-                onChange={(value) => setDestination(value)}
+                options={airportOptions}
+                value={searchParamsState.destination}
+                onChange={value => handleParamChange('destination', value)}
                 placeholder="Select destination"
                 className="text-lg"
               />
@@ -206,24 +339,22 @@ export default function FlightsSearch() {
           {/* Trip Type Selector */}
           <div className="md:col-span-6">
             <div className="flex bg-gray-100 rounded-xl p-1">
-              <button
-                className={`flex-1 py-3 px-4 text-center rounded-xl transition-all duration-300 ${tripType === 'one-way'
-                  ? 'bg-white shadow-md text-blue-600 font-medium'
-                  : 'text-gray-500 hover:text-gray-700'
-                  }`}
-                onClick={() => setTripType('one-way')}
-              >
-                {t('TripType.One')}
-              </button>
-              <button
-                className={`flex-1 py-3 px-4 text-center rounded-xl transition-all duration-300 ${tripType === 'round-trip'
-                  ? 'bg-white shadow-md text-blue-600 font-medium'
-                  : 'text-gray-500 hover:text-gray-700'
-                  }`}
-                onClick={() => setTripType('round-trip')}
-              >
-                {t("TripType.Return")}
-              </button>
+              {(['one-way', 'round-trip'] as const).map(type => {
+                const tripTypeLabels = getTripTypeLabels();
+                return (
+                  <button
+                    key={type}
+                    className={`flex-1 py-3 px-4 text-center rounded-xl transition-all duration-300 ${
+                      searchParamsState.tripType === type
+                        ? 'bg-white shadow-md text-blue-600 font-medium'
+                        : 'text-gray-500 hover:text-gray-700'
+                    }`}
+                    onClick={() => handleParamChange('tripType', type)}
+                  >
+                    {tripTypeLabels[type]}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -231,20 +362,20 @@ export default function FlightsSearch() {
           <div className="md:col-span-6 flex gap-3">
             <div className="flex-1 relative">
               <UiDatePicker
-                selected={departureDate}
-                onChange={setDepartureDate}
+                selected={searchParamsState.departureDate}
+                onChange={date => handleParamChange('departureDate', date || new Date())}
                 minDate={new Date()}
                 placeholderText={t("Date.Departure")}
                 className="w-full"
               />
             </div>
 
-            {tripType === 'round-trip' && (
+            {searchParamsState.tripType === 'round-trip' && (
               <div className="flex-1 relative">
                 <UiDatePicker
-                  selected={returnDate}
-                  onChange={setReturnDate}
-                  minDate={departureDate || new Date()}
+                  selected={searchParamsState.returnDate}
+                  onChange={date => handleParamChange('returnDate', date)}
+                  minDate={searchParamsState.departureDate || new Date()}
                   placeholderText={t("Date.Return")}
                   className="w-full"
                 />
@@ -257,36 +388,34 @@ export default function FlightsSearch() {
         <div className="mt-2 mb-3">
           <button
             className="flex items-center text-blue-600 cursor-pointer mb-2 hover:text-blue-800 transition-colors duration-300"
-            onClick={() => setShowAdvanced(!showAdvanced)}
+            onClick={() => handleParamChange('showAdvanced', !searchParamsState.showAdvanced)}
           >
             <SlidersHorizontal size={18} className="mr-2" />
             <span className="font-medium">{t("AdvancedOptions")}</span>
-            {showAdvanced ?
-              <ChevronUp size={18} className="ml-2 transition-transform" /> :
-              <ChevronDown size={18} className="ml-2 transition-transform" />
+            {searchParamsState.showAdvanced 
+              ? <ChevronUp size={18} className="ml-2" /> 
+              : <ChevronDown size={18} className="ml-2" />
             }
           </button>
 
-          {showAdvanced && (
+          {searchParamsState.showAdvanced && (
             <div className="grid grid-cols-1 md:grid-cols-12 items-start gap-4 border-gray-100 animate-fadeIn">
               {/* Currency */}
               <div className="md:col-span-3">
                 <div className="border border-gray-200 rounded-xl p-4 bg-white shadow-sm">
                   <label className="block text-sm font-medium text-gray-700 mb-2">{t("Currency")}</label>
-                  <div className="relative">
-                    <Select
-                      options={[
-                        { value: 'USD', label: 'USD ($)' },
-                        { value: 'EUR', label: 'EUR (€)' },
-                        { value: 'GBP', label: 'GBP (£)' },
-                        { value: 'SGD', label: 'SGD (S$)' },
-                        { value: 'THB', label: 'THB (฿)' },
-                      ]}
-                      value={currency}
-                      onChange={setCurrency}
-                      placeholder="Select currency"
-                    />
-                  </div>
+                  <Select
+                    options={[
+                      { value: 'USD', label: 'USD ($)' },
+                      { value: 'EUR', label: 'EUR (€)' },
+                      { value: 'GBP', label: 'GBP (£)' },
+                      { value: 'SGD', label: 'SGD (S$)' },
+                      { value: 'THB', label: 'THB (฿)' },
+                    ]}
+                    value={searchParamsState.currency}
+                    onChange={value => handleParamChange('currency', value)}
+                    placeholder="Select currency"
+                  />
                 </div>
               </div>
 
@@ -294,18 +423,12 @@ export default function FlightsSearch() {
               <div className="md:col-span-3">
                 <div className="border border-gray-200 rounded-xl p-4 bg-white shadow-sm">
                   <label className="block text-sm font-medium text-gray-700 mb-2">{t("SortBy.Title")}</label>
-                  <div className="relative">
-                    <Select
-                      options={[
-                        { value: 'price', label: t("SortBy.Price") },
-                        { value: 'duration', label: t("SortBy.Duration") },
-                        { value: 'departure', label: t("SortBy.Departure") },
-                      ]}
-                      value={sortBy}
-                      onChange={(value) => setSortBy(value as 'price' | 'duration' | 'departure')}
-                      placeholder={"Sort by"}
-                    />
-                  </div>
+                  <Select
+                    options={getSortByOptions()}
+                    value={searchParamsState.sortBy}
+                    onChange={handleSortByChange}
+                    placeholder="Sort by"
+                  />
                 </div>
               </div>
 
@@ -313,7 +436,7 @@ export default function FlightsSearch() {
               <div className="md:col-span-3 relative">
                 <div
                   className="border border-gray-200 rounded-xl p-4 pl-12 cursor-pointer hover:border-blue-400 transition-colors duration-300 bg-white shadow-sm"
-                  onClick={() => setShowPassengerSelect(!showPassengerSelect)}
+                  onClick={() => handleParamChange('showPassengerSelect', true)}
                 >
                   <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
                     <User size={20} className="text-blue-500" />
@@ -322,94 +445,16 @@ export default function FlightsSearch() {
                     {totalPassengers} {totalPassengers === 1 ? t("Passengers.One") : t("Passengers.More")}
                   </div>
                   <div className="text-sm text-gray-500 mt-1">
-                    {passengers.adults}A, {passengers.children}C, {passengers.infants}I
+                    {searchParamsState.passengers.adults}A, {searchParamsState.passengers.children}C, {searchParamsState.passengers.infants}I
                   </div>
                 </div>
 
-                {showPassengerSelect && (
-                  <div className="absolute z-20 bg-white border border-gray-200 rounded-xl shadow-lg p-5 w-full mt-2 animate-fadeIn">
-                    <div className="flex justify-between items-center mb-4 pb-2 border-b border-gray-100">
-                      <h3 className="font-semibold text-gray-800">{t("Passengers.More")}</h3>
-                      <button
-                        onClick={() => setShowPassengerSelect(false)}
-                        className="p-1 cursor-pointer rounded-full hover:bg-gray-100 transition-colors"
-                      >
-                        <X size={18} className="text-gray-500" />
-                      </button>
-                    </div>
-
-                    <div className="space-y-4">
-                      <div className="flex justify-between items-center">
-                        <div>
-                          <div className="font-medium text-gray-800">{t("Passengers.Adults.Text")}</div>
-                          <div className="text-sm text-gray-500">{t("Passengers.Adults.EX")}</div>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <button
-                            className="w-9 h-9 cursor-pointer rounded-full border border-gray-200 flex items-center justify-center disabled:opacity-30 hover:bg-blue-50 transition-colors"
-                            disabled={passengers.adults <= 1}
-                            onClick={() => handlePassengerChange('adults', -1)}
-                          >
-                            <Minus size={16} className="text-blue-500" />
-                          </button>
-                          <span className="font-medium w-6 text-center">{passengers.adults}</span>
-                          <button
-                            className="w-9 h-9 cursor-pointer rounded-full border border-gray-200 flex items-center justify-center hover:bg-blue-50 transition-colors"
-                            onClick={() => handlePassengerChange('adults', 1)}
-                          >
-                            <Plus size={16} className="text-blue-500" />
-                          </button>
-                        </div>
-                      </div>
-
-                      <div className="flex justify-between items-center">
-                        <div>
-                          <div className="font-medium text-gray-800">{t("Passengers.Children.Text")}</div>
-                          <div className="text-sm text-gray-500">{t("Passengers.Children.EX")}</div>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <button
-                            className="w-9 h-9 cursor-pointer rounded-full border border-gray-200 flex items-center justify-center disabled:opacity-30 hover:bg-blue-50 transition-colors"
-                            disabled={passengers.children <= 0}
-                            onClick={() => handlePassengerChange('children', -1)}
-                          >
-                            <Minus size={16} className="text-blue-500" />
-                          </button>
-                          <span className="font-medium w-6 text-center">{passengers.children}</span>
-                          <button
-                            className="w-9 h-9 cursor-pointer rounded-full border border-gray-200 flex items-center justify-center hover:bg-blue-50 transition-colors"
-                            onClick={() => handlePassengerChange('children', 1)}
-                          >
-                            <Plus size={16} className="text-blue-500" />
-                          </button>
-                        </div>
-                      </div>
-
-                      <div className="flex justify-between items-center">
-                        <div>
-                          <div className="font-medium text-gray-800">{t("Passengers.Infants.Text")}</div>
-                          <div className="text-sm text-gray-500">{t("Passengers.Infants.EX")}</div>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <button
-                            className="w-9 h-9 cursor-pointer rounded-full border border-gray-200 flex items-center justify-center disabled:opacity-30 hover:bg-blue-50 transition-colors"
-                            disabled={passengers.infants <= 0}
-                            onClick={() => handlePassengerChange('infants', -1)}
-                          >
-                            <Minus size={16} className="text-blue-500" />
-                          </button>
-                          <span className="font-medium w-6 text-center">{passengers.infants}</span>
-                          <button
-                            className="w-9 h-9 cursor-pointer rounded-full border border-gray-200 flex items-center justify-center disabled:opacity-30 hover:bg-blue-50 transition-colors"
-                            disabled={passengers.infants >= passengers.adults}
-                            onClick={() => handlePassengerChange('infants', 1)}
-                          >
-                            <Plus size={16} className="text-blue-500" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                {searchParamsState.showPassengerSelect && (
+                  <PassengerSelector
+                    passengers={searchParamsState.passengers}
+                    onChange={handlePassengerChange}
+                    onClose={() => handleParamChange('showPassengerSelect', false)}
+                  />
                 )}
               </div>
 
@@ -419,8 +464,8 @@ export default function FlightsSearch() {
                   <input
                     type="checkbox"
                     id="direct"
-                    checked={directOnly}
-                    onChange={() => setDirectOnly(!directOnly)}
+                    checked={searchParamsState.directOnly}
+                    onChange={e => handleParamChange('directOnly', e.target.checked)}
                     className="w-5 h-5 text-blue-600 rounded focus:ring-blue-400 cursor-pointer"
                   />
                   <label htmlFor="direct" className="mx-2 block text-sm font-medium text-gray-700 cursor-pointer">
@@ -437,7 +482,7 @@ export default function FlightsSearch() {
           <button
             onClick={searchFlights}
             disabled={loading}
-            className="w-full cursor-pointer bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white p-4 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            className="w-full cursor-pointer bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white p-4 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-75"
           >
             {loading ? (
               <Loader2 className="animate-spin h-6 w-6" />
@@ -467,13 +512,13 @@ export default function FlightsSearch() {
       ) : flights.length > 0 ? (
         <FlightList
           flights={flights}
-          currency={currency}
-          destination={destination}
-          tripType={tripType}
-          returnDate={returnDate}
-          departureDate={departureDate}
+          currency={searchParamsState.currency}
+          destination={searchParamsState.destination}
+          tripType={searchParamsState.tripType}
+          returnDate={searchParamsState.returnDate}
+          departureDate={searchParamsState.departureDate}
           totalPassengers={totalPassengers}
-          originNow={origin}
+          originNow={searchParamsState.origin}
         />
       ) : !loading && (
         <FlightsError />
