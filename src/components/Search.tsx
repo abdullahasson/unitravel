@@ -45,7 +45,7 @@ const Search = () => {
                 </button>
             </div>
 
-
+ 
             {
                 isFlights ?
                     <HomeFlightsSearch />

@@ -470,8 +470,7 @@ body {
 
 /* App Section */
 .app-section {
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.97)),
-    url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+  
 }
 
 .app-phone {

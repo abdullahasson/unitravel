@@ -6,10 +6,12 @@ import { Article } from '@/types/article';
 // Components
 import Hero from "./_section/hero";
 import MobileApp from "./_section/mobile-app"
-import WhyUs from "./_section/whyUs"
+import PromoCarousel from '@/components/PromoCarousel';
 import TripIdeasSection from '@/components/TripIdeas/TripIdeasSection';
 import PopularAirlines from '@/components/popular-airlines';
 import ArticlesCarousel from '@/components/ArticlesCarousel';
+import FlightDestinations from '@/components/FlightDestinations';
+import FeaturesSection from "./_section/FeaturesSection";
 
 
 export default function Home() {
@@ -59,21 +61,51 @@ export default function Home() {
     }
   ];
 
+  const destinations = [
+    { name: "نيويورك", url: "/flights-to/nyc/cheap-flights-to-new-york" },
+    { name: "ميامي", url: "/flights-to/mia/cheap-flights-to-miami" },
+    { name: "لوس أنجليس", url: "/flights-to/lax/cheap-flights-to-los-angeles" },
+    { name: "واشنطن", url: "/flights-to/was/cheap-flights-to-washington-dc" },
+    { name: "أورلاندو", url: "/flights-to/orl/cheap-flights-to-orlando" },
+    { name: "شيكاغو", url: "/flights-to/chi/cheap-flights-to-chicago" },
+    { name: "لاس فيغاس", url: "/flights-to/las/cheap-flights-to-las-vegas-nv" },
+    { name: "دالاس", url: "/flights-to/dfw/cheap-flights-to-dallas-tx" },
+    { name: "ديترويت", url: "/flights-to/dtt/cheap-flights-to-detroit" },
+    { name: "سان فرانسسكو", url: "/flights-to/sfo/cheap-flights-to-san-francisco" }
+  ];
+
   return (
     <div className="min-h-screen ">
       {/* Hero Section */}
       <Hero />
       {/* With Us */}
-      <WhyUs />
+      <PromoCarousel />
+      <FeaturesSection />
       {/* Articals */}
       <ArticlesCarousel articles={articles} />
       {/* Popular Airlines */}
       <PopularAirlines />
       {/* Trip Ideas Section */}
       <TripIdeasSection />
-
       {/* Mobile App */}
       <MobileApp />
+
+      <FlightDestinations 
+        title="رحلات جوية إلى أفضل المدن من الولايات المتحدة الأمريكية"
+        destinations={destinations}
+      />
+      <FlightDestinations 
+        title="رحلات جوية إلى أفضل البلدان من الولايات المتحدة الأمريكية"
+        destinations={destinations}
+      />
+      <FlightDestinations 
+        title="فنادق في أفضل المدن"
+        destinations={destinations}
+      />
+      <FlightDestinations 
+        title="فنادق في أفضل البلاد"
+        destinations={destinations}
+      />
 
     </div>
   );

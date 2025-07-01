@@ -29,7 +29,7 @@ const PopularAirlines = () => {
     const doubleAirlines = [...airlines, ...airlines];
 
     return (
-        <section className="py-12 px-4 bg-transparent">
+        <section className="py-10 px-4 bg-transparent">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
 

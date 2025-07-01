@@ -105,6 +105,17 @@
     "title": "Popular Airlines in the USA",
     "subtitle": "Book Cheap Flights on Your Favorite Airlines"
   },
+  "AppDownloadBanner": {
+    "title": "Unlock exclusive features available only on the Wego app. Download now!",
+    "features": {
+      "1": "Enjoy more than ten practical features designed exclusively for app users.",
+      "2": "Discover our Explore page for popular destinations, weekend getaways, travel news and more.",
+      "3": "Quick payment on the Wego app with offline booking access, various discounts, and password-free login."
+    },
+    "scanText": "Scan to download",
+    "appPreviewAlt": "Wego mobile app preview",
+    "qrAlt": "Download QR code"
+  },
   "TripIdeas": {
     "title": "Ideas for a trip from the United States of America",
     "subtitle": "Discover your perfect getaway with our curated travel recommendations",

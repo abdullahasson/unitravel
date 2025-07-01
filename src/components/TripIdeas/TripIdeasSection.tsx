@@ -18,9 +18,9 @@ const TripIdeasSection: React.FC = () => {
   const filteredTrips = trips.filter(trip => trip.category === activeTab);
   
   return (
-    <section className="pb-12 px-4 sm:px-6 lg:px-8">
+    <section className="py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
+        <div className="mb-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {t('title')}
           </h2>
@@ -30,7 +30,7 @@ const TripIdeasSection: React.FC = () => {
         </div>
         
         {/* Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div className="flex flex-wrap justify-center items-center gap-2 mb-10">
           {tabCategories.map((category) => (
             <button
               key={category}

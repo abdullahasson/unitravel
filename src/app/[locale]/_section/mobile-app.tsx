@@ -17,50 +17,50 @@ const MobileApp = () => {
     const t = useTranslations("MobileApp")
 
     return (
-        <section className="app-section py-20 relative overflow-hidden">
+        <section className="app-section py-10 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full z-0" />
             <div className="container mx-auto px-4 max-w-7xl relative z-10">
                 <div className="flex flex-col lg:flex-row items-center gap-12">
                     {/* محتوى نصي ومميزات */}
                     <div className="lg:w-1/2 text-white">
                         <div className="mb-2">
-                            <span className="bg-white/20 text-white py-2 px-6 rounded-full text-sm font-bold">{t("Badge")}</span>
+                            <span className="bg-white/20 text-gray-600 py-2 px-6 rounded-full text-sm font-bold">{t("Badge")}</span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+                        <h2 className="text-4xl text-gray-900 md:text-5xl font-extrabold mb-6 leading-tight">
                             {t("Heading")}
                         </h2>
-                        <p className="text-xl text-gray-200 mb-10 max-w-2xl">
+                        <p className="text-xl text-gray-800 mb-10 max-w-2xl">
                             {t("SubHeading")}
                         </p>
                         {/* مميزات التطبيق */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-                            <div className="bg-gray-800/10 backdrop-blur-sm p-6 rounded-[22px_0_22px_0] transition-all border border-white/20">
+                            <div className="bg-gray-800/5 backdrop-blur-sm p-6 rounded-[22px_0_22px_0] transition-all border border-white/20">
                                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center mb-4">
                                     <Zap className="text-2xl text-white" />
                                 </div>
-                                <h3 className="text-xl font-bold mb-2">{t("Features.One.Title")}</h3>
-                                <p className="text-gray-200">{t("Features.One.Text")}</p>
+                                <h3 className="text-xl font-bold text-gray-700 mb-2">{t("Features.One.Title")}</h3>
+                                <p className="text-gray-600">{t("Features.One.Text")}</p>
                             </div>
-                            <div className="bg-gray-800/10 backdrop-blur-sm p-6 rounded-[22px_0_22px_0] transition-all border border-white/20">
+                            <div className="bg-gray-800/5 backdrop-blur-sm p-6 rounded-[22px_0_22px_0] transition-all border border-white/20">
                                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center mb-4">
                                     <Percent className="text-2xl text-white" />
                                 </div>
-                                <h3 className="text-xl font-bold mb-2">{t("Features.Two.Title")}</h3>
-                                <p className="text-gray-200">{t("Features.Two.Text")}</p>
+                                <h3 className="text-xl font-bold text-gray-700 mb-2">{t("Features.Two.Title")}</h3>
+                                <p className="text-gray-600">{t("Features.Two.Text")}</p>
                             </div>
-                            <div className="bg-gray-800/10 backdrop-blur-sm p-6 rounded-[22px_0_22px_0] transition-all border border-white/20">
+                            <div className="bg-gray-800/5 backdrop-blur-sm p-6 rounded-[22px_0_22px_0] transition-all border border-white/20">
                                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center mb-4">
                                     <Bell className="text-2xl text-white" />
                                 </div>
-                                <h3 className="text-xl font-bold mb-2">{t("Features.Three.Title")}</h3>
-                                <p className="text-gray-200">{t("Features.Three.Text")}</p>
+                                <h3 className="text-xl font-bold text-gray-700 mb-2">{t("Features.Three.Title")}</h3>
+                                <p className="text-gray-600">{t("Features.Three.Text")}</p>
                             </div>
-                            <div className="bg-gray-800/10 backdrop-blur-sm p-6 rounded-[22px_0_22px_0] transition-all border border-white/20">
+                            <div className="bg-gray-800/5 backdrop-blur-sm p-6 rounded-[22px_0_22px_0] transition-all border border-white/20">
                                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center mb-4">
                                     <Wallet className="text-2xl text-white" />
                                 </div>
-                                <h3 className="text-xl font-bold mb-2">{t("Features.Four.Title")}</h3>
-                                <p className="text-gray-200">{t("Features.Four.Text")}</p>
+                                <h3 className="text-xl font-bold text-gray-700 mb-2">{t("Features.Four.Title")}</h3>
+                                <p className="text-gray-600">{t("Features.Four.Text")}</p>
                             </div>
                         </div>
                         {/* روابط التحميل */}
@@ -120,7 +120,7 @@ const MobileApp = () => {
                                 {/* رمز الاستجابة السريع */}
                                 <div className="qr-container bg-white p-5 rounded-2xl shadow-app flex flex-col items-center">
                                     <div className="relative z-10 text-center flex flex-col items-center">
-                                        <div className="qr-code w-32 h-32 bg-white p-2 rounded-lg mx-auto mb-3">
+                                        <div className="qr-code w-36 h-36 bg-white p-2 rounded-lg mx-auto mb-3">
 
                                         </div>
 
@@ -130,7 +130,7 @@ const MobileApp = () => {
                             </div>
                         </div>
                         <div className="mt-20 text-center text-white/80">
-                            <p className="text-lg">{t("AvailableNow")}</p>
+                            <p className="text-lg text-gray-600">{t("AvailableNow")}</p>
                             <div className="flex justify-center gap-6 mt-4">
                                 <i className="fab fa-android text-3xl text-green-400" />
                                 <i className="fab fa-apple text-3xl" />

@@ -52,17 +52,17 @@ export default function HomeFlightsSearch() {
   // Define search function with useCallback
   const searchFlights = useCallback(async () => {
     if (!origin || !destination) {
-      setError('Please enter origin and destination');
+      setError(t("Error.origin"));
       return;
     }
 
     if (!departureDate) {
-      setError('Please select departure date');
+      setError(t("Error.departureDate"));
       return;
     }
 
     if (tripType === 'round-trip' && !returnDate) {
-      setError('Please select return date');
+      setError(t("Error.returnDate"));
       return;
     }
 
@@ -89,6 +89,7 @@ export default function HomeFlightsSearch() {
     params.append('children', passengers.children.toString());
     params.append('infants', passengers.infants.toString());
 
+
     // router.push(`/ar/flights?${params.toString()}`)
   }, [
     origin,
@@ -99,7 +100,8 @@ export default function HomeFlightsSearch() {
     directOnly,
     sortBy,
     currency,
-    passengers
+    passengers,
+    t
   ]);
 
   // Fetch flights on initial load
@@ -409,8 +411,8 @@ export default function HomeFlightsSearch() {
         {/* Error message */}
         {error && (
           <div className="mt-5 p-4 bg-red-50 text-red-700 rounded-xl flex items-center animate-fadeIn border border-red-100">
-            <XCircle className="text-red-500 mr-3" size={20} />
-            <span>{error}</span>
+            <XCircle className="text-red-500" size={20} />
+            <span className="mx-2">{error}</span>
           </div>
         )}
       </div>
