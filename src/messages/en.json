@@ -3,24 +3,52 @@
     "Logo": "Hotlino",
     "Home": "Home",
     "Flight": "Flights",
-    "Hotel": "Hotel Bookings",
+    "Hotel": "Hotel Reservations",
     "FeaturedDeals": "Featured Deals",
     "App": "App",
     "Login": "Login",
-    "Signup": "Sign Up"
+    "Signup": "Create Account"
   },
   "Hero": {
-    "Heading": "Best travel deals at amazing prices",
-    "SubHeading": "Search, compare, and book your next trip with ease, saving up to 50% with our exclusive offers",
+    "Heading": "Best Travel Deals at Amazing Prices",
+    "SubHeading": "Search, compare, and book your next trip effortlessly. Save up to 50% with our exclusive offers",
     "JoinPartner": "Flights",
-    "BrowseOffers": "Hotel Deals"
+    "BrowseOffers": "Hotel Offers"
+  },
+  "Services": {
+    "title": "Elevate Your Journey",
+    "subtitle": "Redefined Luxury Travel Experiences",
+    "flights": "Flights",
+    "flightsDescription": "Discover the world with premium flight options featuring exclusive comforts and priority services.",
+    "hotels": "Hotels",
+    "hotelsDescription": "Relax in carefully selected luxury accommodations for the discerning traveler.",
+    "feature1": "Instant pricing with dynamic savings",
+    "feature2": "Priority boarding and premium lounges",
+    "feature3": "Flexible cancellation policies",
+    "feature4": "Exclusive member pricing and upgrades",
+    "feature5": "24/7 concierge service",
+    "feature6": "Personalized recommendations based on preferences",
+    "searchPlaceholder": "Where are you traveling from?",
+    "destinationPlaceholder": "Destination",
+    "datesPlaceholder": "Dates",
+    "travelersPlaceholder": "Travelers",
+    "filters": "Advanced Filters",
+    "searchButton": "Search Flights",
+    "learnMore": "Discover Experiences",
+    "statsTitle": "Travel with Confidence",
+    "bookings": "Annual Bookings",
+    "satisfaction": "Customer Satisfaction",
+    "support": "Global Support",
+    "destinations": "Countries Covered",
+    "travelers": "Travelers Booked This Month",
+    "partners": "Global Partners"
   },
   "WhyUs": {
     "title": "Why Choose Us?",
     "subtitle": "We simplify your travel planning with affordable costs through our advanced tools and exclusive offers",
     "card1": {
       "title": "Best Price Guarantee",
-      "text": "We guarantee the best prices for flights and hotel stays. Found a lower price? We'll match it."
+      "text": "We guarantee you the best prices for flights and hotel stays. Found a lower price? We'll match it."
     },
     "card2": {
       "title": "Secure Bookings",
@@ -28,16 +56,16 @@
     },
     "card3": {
       "title": "24/7 Instant Support",
-      "text": "Our travel experts are available 24/7 to assist with all your bookings and inquiries."
+      "text": "Our travel experts are available 24/7 to assist with all your inquiries and bookings."
     }
   },
   "Deals": {
-    "title": "Exclusive Travel Deals",
-    "subtitle": "Discover exceptional discounts on flights and hotel stays to top destinations",
+    "title": "Featured Travel Deals",
+    "subtitle": "Discover exceptional discounts on flights and hotel stays for popular destinations",
     "dir": "ltr",
     "tabs": {
       "flights": "Flight Deals",
-      "hotels": "Hotel Deals"
+      "hotels": "Accommodation Deals"
     },
     "dealsList": [
       {
@@ -45,11 +73,11 @@
         "type": "Flight",
         "title": "New York to Paris",
         "price": "$459",
-        "priceSuffix": "round trip",
-        "description": "Direct flight with premium amenities. Limited seats available.",
+        "priceSuffix": "Round Trip",
+        "description": "Direct flight with luxury amenities. Limited seats available.",
         "meta": [
-          {"icon": "calendar", "text": "May - Oct 2024"},
-          {"icon": "clock", "text": "7h 30m"}
+          {"icon": "calendar", "text": "May - October 2024"},
+          {"icon": "clock", "text": "7 hours 30 minutes"}
         ]
       },
       {
@@ -57,32 +85,32 @@
         "type": "Hotel",
         "title": "Luxury Resort in Bali",
         "price": "$129",
-        "priceSuffix": "per night",
-        "description": "5-star resort with private beach and spa. Includes breakfast.",
+        "priceSuffix": "Per Night",
+        "description": "5-star resort with private beach and spa. Breakfast included.",
         "meta": [
           {"icon": "star", "text": "4.8 (120 reviews)"},
-          {"icon": "umbrella", "text": "Pool"}
+          {"icon": "umbrella", "text": "Swimming Pool"}
         ]
       },
       {
         "id": 3,
         "type": "Package",
-        "title": "Rome City Break",
+        "title": "Rome Holiday",
         "price": "$799",
-        "priceSuffix": "per person",
-        "description": "Flight + 4 nights in a central hotel with guided tours included.",
+        "priceSuffix": "Per Person",
+        "description": "Flight + 4 nights in central hotel with guided tours.",
         "meta": [
-          {"icon": "calendar", "text": "Sep - Dec 2024"},
+          {"icon": "calendar", "text": "September - December 2024"},
           {"icon": "utensils", "text": "Breakfast"}
         ]
       }
     ],
     "viewDeal": "View Deal",
-    "viewAll": "View All Travel Deals"
+    "viewAll": "View All Travel Offers"
   },
   "Insights": {
     "title": "Travel Tips",
-    "subtitle": "Data-driven insights to help you plan better and save more",
+    "subtitle": "Data-backed insights to help you plan better and save more",
     "card1": {
       "title": "Traveler Satisfaction"
     },
@@ -98,33 +126,22 @@
   },
   "ArticlesCarousel": {
     "title": "Latest Articles",
-    "seeMore": "See More Articles",
+    "seeMore": "More Articles",
     "readArticle": "Read Article"
   },
   "PopularAirlines": {
-    "title": "Popular Airlines in the USA",
-    "subtitle": "Book Cheap Flights on Your Favorite Airlines"
-  },
-  "AppDownloadBanner": {
-    "title": "Unlock exclusive features available only on the Wego app. Download now!",
-    "features": {
-      "1": "Enjoy more than ten practical features designed exclusively for app users.",
-      "2": "Discover our Explore page for popular destinations, weekend getaways, travel news and more.",
-      "3": "Quick payment on the Wego app with offline booking access, various discounts, and password-free login."
-    },
-    "scanText": "Scan to download",
-    "appPreviewAlt": "Wego mobile app preview",
-    "qrAlt": "Download QR code"
+    "title": "Popular Airlines in the United States",
+    "subtitle": "Book cheap flights with your favorite airlines"
   },
   "TripIdeas": {
-    "title": "Ideas for a trip from the United States of America",
-    "subtitle": "Discover your perfect getaway with our curated travel recommendations",
+    "title": "Trip Ideas from USA",
+    "subtitle": "Discover your perfect destination with carefully curated travel recommendations",
     "tabs": {
       "romantic": "Romantic Getaways",
       "cultural": "Cultural Experiences",
       "beach": "Beach Destinations",
-      "family": "Family Friendly",
-      "nature": "Nature & Adventure",
+      "family": "Family-Friendly",
+      "nature": "Nature & Adventures",
       "forTrips": "For Trips"
     },
     "card": {
@@ -133,48 +150,48 @@
   },
   "MobileApp": {
     "Badge": "New Experience",
-    "Heading": "Download the Hotlino app and book your trip in minutes",
-    "SubHeading": "Enjoy an exceptional booking experience with our app. Browse thousands of offers, manage your bookings, and travel without limits from anywhere at any time.",
+    "Heading": "Download Hotlino App and Book Your Trip in Minutes",
+    "SubHeading": "Enjoy an exceptional booking experience through our app. Browse thousands of offers, manage your bookings, and travel without limits from anywhere, anytime.",
     "Features": {
       "One": {
         "Title": "Instant Booking",
-        "Text": "Complete your booking in under 2 minutes with simple steps"
+        "Text": "Complete your booking in under two minutes with simple steps"
       },
       "Two": {
         "Title": "Exclusive Offers",
-        "Text": "Discounts up to 50% available only to app users"
+        "Text": "Up to 50% discounts available only for app users"
       },
       "Three": {
-        "Title": "Deal Notifications",
+        "Title": "Deal Alerts",
         "Text": "Be the first to know about the latest offers for your favorite destinations"
       },
       "Four": {
         "Title": "Secure Payments",
-        "Text": "Multiple payment systems with highest transaction security standards"
+        "Text": "Multiple payment systems with highest transaction protection standards"
       }
     },
     "AvailableNow": "Available now on all devices",
-    "DownloadButton": "Download from",
+    "DownloadButton": "Download App From",
     "mobile": {
       "Heading": "Hotlino",
       "Text": "Search. Book. Travel",
       "Card": {
         "Title": "Riyadh ⇨ Dubai",
-        "Date": "Thursday, July 15",
+        "Date": "Thursday 15 July",
         "Price": "899 SAR"
       },
       "Card2": {
         "Title": "Jeddah ⇨ Istanbul",
-        "Date": "Saturday, August 20",
+        "Date": "Saturday 20 August",
         "Price": "1,250 SAR"
       },
-      "ReadQrCode": "Scan code to install app"
+      "ReadQrCode": "Scan QR Code to Install App"
     }
   },
   "SearchFlightsComponent": {
     "Location": {
-      "Origin": "Current Country",
-      "Destination": "Choose Immigration Country"
+      "Origin": "Departure Location",
+      "Destination": "Arrival Location"
     },
     "TripType": {
       "One": "One Way",
@@ -194,11 +211,11 @@
       "More": "Passengers",
       "Adults": {
         "Text": "Adults",
-        "EX": "Above 12 years"
+        "EX": "12+ years"
       },
       "Children": {
         "Text": "Children",
-        "EX": "2 to 11 years"
+        "EX": "2-11 years"
       },
       "Infants": {
         "Text": "Infants",
@@ -211,25 +228,41 @@
     },
     "SortBy": {
       "Title": "Sort By",
-      "Price": "Price (Lowest first)",
-      "Duration": "Duration (Shortest first)",
+      "Price": "Price (Lowest First)",
+      "Duration": "Duration (Shortest First)",
       "Departure": "Departure Time"
     },
     "Direct": "Direct Flights Only",
     "NoResults": {
       "Title": "No Results Found",
-      "Message": "We couldn't find any flights matching your search criteria. Please modify your search criteria and try again."
+      "Message": "We couldn't find flights matching your search criteria. Please modify your search criteria and try again."
     },
     "NotFoundFlight": {
       "Title": "No Flights Found",
-      "Message": "We couldn't find any flights matching your search criteria. Please modify your search criteria and try again."
+      "Message": "We couldn't find flights matching your search criteria. Please modify your search criteria and try again."
+    },
+    "Error": {
+      "origin": "Enter departure and destination",
+      "departureDate": "Enter departure date",
+      "returnDate": "Enter return date"
     }
   },
+  "AppDownloadBanner": {
+    "title": "Unlock exclusive features only available on Wego app. Download now!",
+    "features": {
+      "1": "Enjoy over ten practical features designed exclusively for app users.",
+      "2": "Discover our Explore page for popular destinations, weekend getaways, travel news, and more.",
+      "3": "Fast payment on Wego app with offline booking access, various discounts, and passwordless login."
+    },
+    "scanText": "Scan to Download",
+    "appPreviewAlt": "Wego App Preview",
+    "qrAlt": "Download QR Code"
+  },
   "FlightCard": {
-    "FlightListTitle": "Flights Found",
+    "FlightListTitle": "Flight Results",
     "direct": "Direct",
-    "nonStop": "Non-stop",
-    "stops": "{count, plural, zero {Direct} one {# stop} two {# stops} few {# stops} many {# stops} other {# stops}}",
+    "nonStop": "Nonstop",
+    "stops": "{count, plural, zero {Direct} one {1 stop} two {2 stops} few {# stops} many {# stops} other {# stops}}",
     "select": "Select"
   },
   "SearchHotelsComponent": {
@@ -256,35 +289,35 @@
   "HotelsError": {
     "NoResults": {
       "title": "No Hotels Found",
-      "description": "We couldn't find any hotels matching your search criteria. Try adjusting your filters or search parameters.",
+      "description": "We couldn't find hotels matching your search criteria. Please modify filters or search criteria.",
       "action": "Search Again",
       "resetFilters": "Reset Filters"
     },
     "Connection": {
       "title": "Connection Issue",
-      "description": "We're having trouble connecting to our servers. Please check your internet connection and try again.",
+      "description": "We're experiencing server connection problems. Please check your internet connection and try again.",
       "action": "Retry"
     },
     "Location": {
       "title": "Location Not Found",
-      "description": "We couldn't find hotels in this location. Please check the spelling or try a nearby destination.",
+      "description": "We couldn't find hotels in this location. Please check spelling or try a nearby location.",
       "action": "Change Location"
     },
     "ApiError": {
       "title": "Service Unavailable",
-      "description": "We're experiencing technical difficulties on our end. Please try again later.",
+      "description": "We're experiencing technical difficulties. Please try again later.",
       "action": "Try Again"
     },
     "InvalidDates": {
       "title": "Invalid Dates",
-      "description": "Check-out date must be after check-in date. Please adjust your dates and try again.",
+      "description": "Departure date must be after arrival date. Please adjust dates and try again.",
       "action": "Change Dates"
     },
     "Suggestions": {
       "title": "Try these suggestions:",
       "refineSearch": "Refine your search using different filters",
-      "checkLocation": "Check the location name or try a nearby city",
-      "browseDestinations": "Browse our popular destinations"
+      "checkLocation": "Check location name or try nearby city",
+      "browseDestinations": "Browse popular destinations"
     }
   },
   "Common": {
@@ -320,21 +353,21 @@
     "PriceAscending": "Price: Low to High",
     "PriceDescending": "Price: High to Low",
     "RatingHigh": "Highest Rating",
-    "DistanceCenter": "Distance to Center"
+    "DistanceCenter": "Distance from Center"
   },
   "Footer": {
     "Logo": "Hotlino",
     "AboutUs": {
-      "Title": "About MyTrips",
-      "Text": "We offer the best travel deals, flights, and hotels at competitive prices. Book your next trip with us and save money."
+      "Title": "About Hotlino",
+      "Text": "We provide the best travel, flight, and hotel deals at competitive prices. Book your next trip with us and save money."
     },
     "QuickLinks": {
       "Title": "Quick Links",
       "Home": "Home",
-      "Flight": "Flight Deals",
-      "Hotel": "Hotel Deals",
+      "Flight": "Flights",
+      "Hotel": "Hotels",
       "FeaturedDeals": "Special Offers",
-      "Contact": "Contact Us"
+      "Contact": "App"
     },
     "PopularDestinations": {
       "Title": "Popular Destinations",
@@ -348,12 +381,12 @@
       "Title": "Contact Us",
       "Location": "Riyadh, Saudi Arabia"
     },
-    "BootomFooter": "MyTrips, All Rights Reserved | Abdullah Hassoun 2025"
+    "BootomFooter": "Hotlino, All Rights Reserved | Abdullah Hassoun 2025"
   },
   "AppDownloadPage": {
     "hero": {
       "title": "Your Perfect Travel Companion",
-      "subtitle": "Download our app to book flights, hotels, and discover amazing destinations with exclusive mobile-only deals.",
+      "subtitle": "Download our app to book flights, hotels, and discover amazing destinations with mobile-exclusive offers.",
       "benefits": {
         "secure": "Secure Payments",
         "payment": "Multiple Payment Options",
@@ -365,11 +398,11 @@
       "subtitle": "Experience travel booking like never before with our powerful features",
       "flight": {
         "title": "Instant Flight Booking",
-        "description": "Find and book flights in seconds with our intuitive interface and real-time availability."
+        "description": "Search and book flights in seconds using our intuitive interface and real-time availability."
       },
       "hotel": {
         "title": "Smart Hotel Search",
-        "description": "Discover the perfect accommodation with smart filters, photos, and verified reviews."
+        "description": "Find perfect accommodations with smart filters, photos, and verified reviews."
       },
       "discovery": {
         "title": "Destination Discovery",
@@ -382,185 +415,77 @@
     },
     "testimonials": {
       "title": "What Travelers Say",
-      "subtitle": "Join millions of satisfied users who travel smarter with our app",
+      "subtitle": "Join millions of satisfied users traveling smarter with our app",
       "1": {
         "name": "Sarah Johnson",
         "role": "Frequent Traveler",
-        "content": "This app has completely changed how I travel. I saved over $500 on my last trip thanks to their price comparison feature!"
+        "content": "This app completely changed how I travel. Saved over $500 on my last trip thanks to price comparison!"
       },
       "2": {
         "name": "Mohammed Ali",
         "role": "Business Traveler",
-        "content": "The mobile check-in and boarding pass features save me so much time at airports. A must-have for any traveler."
+        "content": "Mobile check-in and boarding pass features save so much time at airports. A must-have for any traveler."
       },
       "3": {
         "name": "Emma Rodriguez",
         "role": "Travel Blogger",
-        "content": "I've tried every travel app out there, and this one is by far the most intuitive and feature-rich. The hotel booking experience is exceptional."
+        "content": "I've tried all travel apps, this one is the most user-friendly and feature-rich. Hotel booking experience is exceptional."
       }
     },
     "faq": {
-      "title": "Frequently Asked Questions",
+      "title": "FAQs",
       "subtitle": "Everything you need to know about our mobile app",
       "1": {
         "question": "Is the app available for both iOS and Android?",
-        "answer": "Yes! Our app is available for both iOS and Android devices. You can download it from the App Store or Google Play."
+        "answer": "Yes! Our app is available for both iOS and Android devices. Download from App Store or Google Play."
       },
       "2": {
         "question": "Do I need to create a new account for the app?",
-        "answer": "No, you can use your existing website account to log in to the app. All your saved preferences and booking history will be synced automatically."
+        "answer": "No, you can use your existing website account to log into the app. All saved preferences and booking history will sync automatically."
       },
       "3": {
         "question": "Are mobile bookings more expensive?",
-        "answer": "Actually, we offer exclusive mobile-only deals that are often cheaper than our website prices. Plus, you'll get special app-only promotions."
+        "answer": "Actually, we offer mobile-exclusive deals that are often cheaper than our website prices. Plus, you'll get app-only promotional offers."
       },
       "4": {
-        "question": "Can I manage my existing bookings through the app?",
+        "question": "Can I manage existing bookings through the app?",
         "answer": "Absolutely! You can view, modify, or cancel any booking made through our platform directly in the app."
       }
     },
     "cta": {
       "title": "Ready to Travel Smarter?",
       "subtitle": "Download the app today and get $20 off your first booking!",
-      "note": "App available in both English and Arabic languages"
+      "note": "App available in English and Arabic"
     }
   },
-  "HotelSearch": {
-    "title": "Find Your Perfect Stay",
-    "subtitle": "Compare prices and find the best deals for your trip",
-    "location": "Destination",
-    "checkIn": "Check-in",
-    "checkOut": "Check-out",
-    "rooms": "Rooms",
-    "guests": "Guests",
-    "selectLocation": "Select destination",
-    "selectDate": "Select date",
-    "search": "Search Hotels",
-    "searching": "Searching",
-    "night": "night",
-    "viewDeal": "View Deal",
-    "emptyTitle": "Find Amazing Hotel Deals",
-    "emptyDescription": "Search for hotels to compare prices and find the best deals for your trip",
-    "loading": "Finding the best deals for you...",
-    "locations": {
-      "dubai": "Dubai, UAE",
-      "paris": "Paris, France",
-      "newYork": "New York, USA",
-      "tokyo": "Tokyo, Japan",
-      "bali": "Bali, Indonesia"
-    },
-    "hotels": {
-      "luxuryResort": "Luxury Beach Resort",
-      "cityViewHotel": "City View Hotel",
-      "beachParadise": "Beach Paradise Resort",
-      "businessInn": "Business Inn",
-      "mountainRetreat": "Mountain Retreat Lodge"
-    },
-    "amenities": {
-      "pool": "Swimming Pool",
-      "spa": "Spa & Wellness",
-      "wifi": "Free WiFi",
-      "breakfast": "Breakfast Included",
-      "gym": "Fitness Center"
-    },
-    "filters": "Filters",
-    "sortBy": "Sort by",
-    "recommended": "Recommended",
-    "priceLow": "Price (Low to High)",
-    "priceHigh": "Price (High to Low)",
-    "rating": "Rating",
-    "priceRange": "Price Range",
-    "hotelRating": "Hotel Rating",
-    "amenitie": "Amenities",
-    "otherFilters": "Other Filters",
-    "freeCancel": "Free Cancellation",
-    "breakfastIncluded": "Breakfast Included",
-    "swimmingPool": "Swimming Pool",
-    "reviews": "reviews",
-    "includesTaxes": "Includes taxes & fees"
-  },
-  "FlightPage": {
-    "title": "Find Cheap Flights & Hotel Deals",
-    "subtitle": "Search, compare, and save on flights and hotels",
-    "from": "From",
-    "to": "To",
+  "FlightSearch": {
+    "oneWay": "One Way",
+    "roundTrip": "Round Trip",
+    "fromPlaceholder": "City or Airport",
+    "toPlaceholder": "City or Airport",
+    "selectAirport": "Select an airport...",
     "departure": "Departure",
     "return": "Return",
-    "passengers": "Passengers",
-    "class": "Class",
-    "search": "Search Flights",
-    "oneWay": "One-way",
-    "roundTrip": "Round-trip",
-    "economy": "Economy",
-    "business": "Business",
-    "first": "First",
-    "adults": "Adults",
-    "children": "Children",
-    "infants": "Infants"
+    "currency": "Currency",
+    "searchButton": "Search Flights",
+    "searching": "Searching...",
+    "swap": "Swap Airports",
+    "clear": "Clear Selection"
   },
-  "HotelsPage": {
-    "Hotels": "Hotels",
-    "Search": "Search",
-    "WhereTo": "Where are you going?",
-    "CheckIn": "Check-in",
-    "CheckOut": "Check-out",
-    "RoomsGuests": "Rooms & Guests",
-    "Rooms": "Rooms",
-    "Adults": "Adults",
-    "Children": "Children",
-    "SearchHotels": "Search Hotels",
-    "Loading": "Loading...",
-    "SortBy": "Sort by",
-    "PriceHighLow": "Price (high to low)",
-    "PriceLowHigh": "Price (low to high)",
-    "Rating": "Rating",
-    "Name": "Name",
-    "NoResults": "No hotels found",
-    "PerNight": "/night",
-    "BookNow": "Book Now",
-    "Features": "Features",
-    "FreeWifi": "Free WiFi",
-    "Pool": "Pool",
-    "Gym": "Gym",
-    "Breakfast": "Breakfast Included",
-    "Recommended": "Recommended",
-    "TryDifferentDates": "Try different dates or location",
-    "ResultsCount": "{count} hotels found",
-    "CurrentLocation": "current location",
-    "Filters": "Filters",
-    "Distance": "Distance",
-    "ResetAll": "Reset all",
-    "PriceRange": "Price Range",
-    "Cancellation": "Cancellation",
-    "FreeCancellation": "Free cancellation",
-    "Amenities": "Amenities",
-    "Hotel": "Hotel",
-    "PricePerNight": "Price per night",
-    "kmFromCenter": "km from center",
-    "reviews": "reviews",
-    "LessDetails": "Less details",
-    "MoreDetails": "More details",
-    "RoomOptions": "Room Options",
-    "StandardRoom": "Standard Room",
-    "DeluxeRoom": "Deluxe Room",
-    "BreakfastIncluded": "Breakfast included",
-    "OceanView": "Ocean view",
-    "Provider": "Provider",
-    "ViewDetails": "View details",
-    "Facilities": "Facilities",
-    "Restaurant": "Restaurant",
-    "Spa": "Spa",
-    "Parking": "Parking",
-    "Location": "Location",
-    "DistanceFromCenter": "{distance} km from city center",
-    "ViewOnMap": "View on map",
-    "Previous": "Previous",
-    "Next": "Next",
-    "TryDifferentFilters": "Try different search criteria or filters",
-    "ResetFilters": "Reset all filters"
-  },
-  "FlightDealsCarousel": {
+  "FlightResults": {
+    "foundFlights": "Found {count} flights",
+    "perPerson": "Per Person",
+    "duration": "{hours}h {minutes}m",
+    "directFlight": "Direct",
+    "transfers": "{count} stop",
+    "transfers_plural": "{count} stops",
     "bookNow": "Book Now",
-    "tryAgain": "Try Again"
+    "noFlightsTitle": "No Flights Found",
+    "noFlightsDescription": "Try modifying your search criteria",
+    "enterSearch": "Enter search criteria to find flights",
+    "error": "Failed to load flights. Please try again.",
+    "showCalendar": "Show Price Calendar",
+    "hideCalendar": "Hide Calendar",
+    "flightsFound": "Available Flights"
   }
 }

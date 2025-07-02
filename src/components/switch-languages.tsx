@@ -17,7 +17,12 @@ import fr from "../../public/fr.png"
 // Icons 
 import { ChevronDown } from "lucide-react"
 
-const SwitchLanguages = () => {
+
+interface SwitchLanguagesProps {
+    scrolled: boolean
+}
+
+const SwitchLanguages = ({scrolled} : SwitchLanguagesProps) => {
     const pathname = usePathname();
     const lang = useLocale() as "ar" | "en" | "fr" | "es" | "tr"
     const [open, setOpen] = useState<boolean>(false);
@@ -42,7 +47,7 @@ const SwitchLanguages = () => {
         <div className="desktop-language-switcher language-switcher">
             <div className="flex items-center gap-2" onClick={() => setOpen(!open)}>
                 <Image src={handleActiveLanguageImage[lang]} className="language-flag" alt={handleActiveLanguageButttonText[lang]} />
-                <span className="text-gray-700 font-medium">{handleActiveLanguageButttonText[lang]}</span>
+                <span className={`${scrolled ? 'text-gray-700' : 'text-white'} font-medium`}>{handleActiveLanguageButttonText[lang]}</span>
                 <ChevronDown className="text-xs text-gray-500" />
             </div>
   

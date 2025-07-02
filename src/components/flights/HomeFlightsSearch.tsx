@@ -193,11 +193,11 @@ export default function HomeFlightsSearch() {
 
   return (
     <div className="max-w-6xl mx-auto p-4">
-      <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
+      <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-2xl p-8 max-[767px]:p-6 border border-gray-100">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 max-[767px]:gap-2 items-center">
           {/* Location Inputs */}
-          <div className="md:col-span-12 flex items-center space-x-3">
-            <div className="flex-1 relative">
+          <div className="md:col-span-12 max-[767px]:flex-col relative flex items-center space-x-3">
+            <div className="flex-1 relative max-[767px]:w-full max-[767px]:mx-auto">
               <Select
                 options={AIRPORTSARRAY.map(airport => ({
                   value: airport.code.toUpperCase(),
@@ -205,7 +205,7 @@ export default function HomeFlightsSearch() {
                 }))}
                 value={formState.origin}
                 onChange={(value) => handleInputChange('origin', value)}
-                placeholder="origin"
+                placeholder={t('Location.Origin')}
                 className="text-lg"
               />
             </div>
@@ -213,13 +213,13 @@ export default function HomeFlightsSearch() {
             <button
               type="button"
               onClick={swapLocations}
-              className="p-3 cursor-pointer bg-white border border-gray-200 hover:border-blue-400 hover:bg-blue-50 rounded-full transition-all duration-300 shadow-md"
+              className="max-[767px]:absolute max-[767px]:left-0 max-[767px]:m-0 max-[767px]:top-1/2 max-[767px]:-translate-y-1/2 max-[767px]:z-20 p-3 cursor-pointer bg-white border border-gray-200 hover:border-blue-400 hover:bg-blue-50 rounded-full transition-all duration-300 shadow-md"
               aria-label="SwapLocations"
             >
               <ArrowRightLeft size={18} className="text-blue-500" />
             </button>
 
-            <div className="flex-1 relative">
+            <div className="flex-1 relative max-[767px]:w-full max-[767px]:mx-auto max-[767px]:rounded-none">
               <Select
                 options={AIRPORTSARRAY.map(airport => ({
                   value: airport.code.toUpperCase(),
@@ -227,14 +227,14 @@ export default function HomeFlightsSearch() {
                 }))}
                 value={formState.destination}
                 onChange={(value) => handleInputChange('destination', value)}
-                placeholder="destination"
+                placeholder={t('Location.Destination')}
                 className="text-lg"
               />
             </div>
           </div>
 
           {/* Trip Type Selector */}
-          <div className="md:col-span-6">
+          <div className="md:col-span-6 max-[767px]:-order-1">
             <div className="flex bg-gray-100 rounded-xl p-1">
               {(['one-way', 'round-trip'] as const).map((type) => (
                 <button

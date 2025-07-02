@@ -116,7 +116,7 @@ const MobileApp = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-48">
+                            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-48">
                                 {/* رمز الاستجابة السريع */}
                                 <div className="qr-container bg-white p-5 rounded-2xl shadow-app flex flex-col items-center">
                                     <div className="relative z-10 text-center flex flex-col items-center">

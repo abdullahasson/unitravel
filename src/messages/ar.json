@@ -190,12 +190,12 @@
   },
   "SearchFlightsComponent": {
     "Location": {
-      "Origin": "مكان المغادرة",
-      "Destination": "مكان الوصول"
+      "Origin": "من",
+      "Destination": "الى"
     },
     "TripType": {
       "One": "ذهاب فقط",
-      "Return": "ذهاب وعودة"
+      "Return": "وجهات متعددة"
     },
     "DepartureDate": {
       "Placeholder": "تاريخ المغادرة"
