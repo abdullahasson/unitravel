@@ -2,41 +2,30 @@
 
 // Next 
 import Link from "next/link"
-// React
-import { useState , useEffect } from "react"
 // Next Intl
 import { useTranslations , useLocale } from "next-intl";
 // Components
-import SwitchLanguages from "./switch-languages"
+import SwitchLanguages from "../switch-languages"
 // Icons
 import { Plane , Hamburger } from "lucide-react"
 
-interface HeaderProps {
-    initialScrolled?: boolean;
-};
 
-const Header = ({ initialScrolled = false }: HeaderProps) => {
+const Header = () => {
     // Translate
     const t = useTranslations("Header");
     const lang = useLocale();
 
-    // State
-    const [scrolled, setScrolled] = useState(initialScrolled);
-
-    useEffect(() => {
-      const handleScroll = () => {
-        setScrolled(window.scrollY > 10);
-      };
-      
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
+    // Navigation links configuration
+    const navLinks = [
+        { href: "/", path: '/', label: t("Home") },
+        { href: "/flights", path: '/flights', label: t("Flight") },
+        { href: "/hotels", path: '/hotels', label: t("Hotel") },
+        { href: "/mobile-app", path: '/mobile-app', label: t("App") },
+    ];
 
     return (
         <header className={`
-            fixed top-0 left-0 right-0 z-50 transition-all duration-400
-            ${scrolled ? "bg-white shadow-md" : "bg-transparent text-white"}
+            transition-all duration-400 bg-white shadow-md border-b border-gray-200
         `}>
             <div className="container mx-auto px-4 xl:px-0 max-w-7xl">
                 <div className="navbar flex justify-between items-center py-4 transition-all duration-400">
@@ -46,11 +35,26 @@ const Header = ({ initialScrolled = false }: HeaderProps) => {
                     </Link>
                     
                     <div className="nav-links hidden lg:flex gap-8">
+                        {navLinks.map((link) => {
+                            return (
+                                <Link
+                                    key={link.path}
+                                    href={`/${lang}${link.href}`}
+                                    className={`
+                                        nav-link 
+                                        ${false ? "active" : ""}
+                                        relative py-2 font-medium text-lg transition-all duration-400 active
+                                    `}
+                                >
+                                    {link.label}
+                                </Link>
+                            );
+                        })}
                     </div>
 
                     <div className="flex items-center gap-6">
                         {/* تبديل اللغة - نسخة سطح المكتب */}
-                        <SwitchLanguages scrolled={scrolled} />
+                        <SwitchLanguages scrolled={true} />
                     
                         <Link className="text-sm border border-white rounded-full py-2 px-3 transition-all hover:scale-105" href="/sign-in">
                             تسجيل الدخول

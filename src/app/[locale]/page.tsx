@@ -12,6 +12,7 @@ import PopularAirlines from '@/components/popular-airlines';
 import ArticlesCarousel from '@/components/ArticlesCarousel';
 import FlightDestinations from '@/components/FlightDestinations';
 import FeaturesSection from "./_section/FeaturesSection";
+import Header from "@/components/header"
 
 
 export default function Home() {
@@ -76,6 +77,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen ">
+      <Header />
       {/* Hero Section */}
       <Hero />
       {/* With Us */}

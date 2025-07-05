@@ -190,8 +190,10 @@
   },
   "SearchFlightsComponent": {
     "Location": {
-      "Origin": "Departure Location",
-      "Destination": "Arrival Location"
+      "Origin": "Where from?",
+      "OriginPlaceholder": "Departure airport",
+      "Destination": "Where to?",
+      "DestinationPlaceholder": "Arrival airport"
     },
     "TripType": {
       "One": "One Way",
@@ -247,6 +249,37 @@
       "returnDate": "Enter return date"
     }
   },
+  "SearchHotelsComponent": {
+    "SearchTitle": "Find Your Perfect Stay",
+    "Destination": {
+      "Placeholder": "Where are you going?"
+    },
+    "Date": {
+      "CheckIn": "Check-in",
+      "CheckOut": "Check-out",
+      "CheckInPlaceholder": "Select date",
+      "CheckOutPlaceholder": "Select date"
+    },
+    "GuestsRooms": {
+      "Title": "Guests & Rooms",
+      "Adults": "Adults",
+      "AdultsEx": "Ages 18+",
+      "Children": "Children",
+      "ChildrenEx": "Ages 0-17",
+      "Rooms": "Rooms",
+      "RoomsEx": "Number of rooms",
+      "Guest": "guest",
+      "Guests": "guests",
+      "Room": "room"
+    },
+    "CancellationPolicy": "Free Cancellation",
+    "SearchButton": "Search Hotels",
+    "Error": {
+      "destination": "Please select a destination",
+      "checkIn": "Please select check-in date",
+      "checkOut": "Please select check-out date"
+    }
+  },
   "AppDownloadBanner": {
     "title": "Unlock exclusive features only available on Wego app. Download now!",
     "features": {
@@ -264,27 +297,6 @@
     "nonStop": "Nonstop",
     "stops": "{count, plural, zero {Direct} one {1 stop} two {2 stops} few {# stops} many {# stops} other {# stops}}",
     "select": "Select"
-  },
-  "SearchHotelsComponent": {
-    "Guest": "Guest",
-    "Guests": "Guests",
-    "Room": "Room",
-    "Rooms": "Rooms",
-    "GuestsRooms": "Guests & Rooms",
-    "Adults": "Adults",
-    "Children": "Children",
-    "ChildrenAge": "0-17 years",
-    "AdvancedOptions": "Advanced Options",
-    "Currency": "Currency",
-    "SortBy": {
-      "Title": "Sort By",
-      "Price": "Price",
-      "Rating": "Rating",
-      "Distance": "Distance"
-    },
-    "PriceRange": "Price Range",
-    "MinRating": "Minimum Rating",
-    "SearchButton": "Search Hotels"
   },
   "HotelsError": {
     "NoResults": {

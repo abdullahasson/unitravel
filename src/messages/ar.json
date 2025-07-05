@@ -190,12 +190,15 @@
   },
   "SearchFlightsComponent": {
     "Location": {
-      "Origin": "من",
-      "Destination": "الى"
+      "Origin": "من أين؟",
+      "OriginPlaceholder": "مطار المطار",
+      "Destination": "إلى أين؟",
+      "DestinationPlaceholder": "مطار المطار"
     },
     "TripType": {
       "One": "ذهاب فقط",
-      "Return": "وجهات متعددة"
+      "Return": "ذهاب و عودة",
+      "RoundTrip": "وجهات متعددة"
     },
     "DepartureDate": {
       "Placeholder": "تاريخ المغادرة"
@@ -247,15 +250,52 @@
       "returnDate": "أدخل تاريخ العودة"
     }
   },
+  "AirportSelect": {
+    "Search": "ابحث عن مطار",
+    "NoResults": "لم يتم العثور على مطارات تطابق البحث",
+    "Loading": "جاري البحث...",
+    "Not": "لا توجد مطارات للبحث"
+  },
+  "SearchHotelsComponent": {
+    "SearchTitle": "أين تفضل المبيت ؟",
+    "Destination": {
+      "Placeholder": "الوجهة"
+    },
+    "Date": {
+      "CheckIn": "تسجيل الدخول",
+      "CheckOut": "تسجيل الخروج",
+      "CheckInPlaceholder": "اختر التاريخ",
+      "CheckOutPlaceholder": "اختر التاريق"
+    },
+    "GuestsRooms": {
+      "Title": "الضيوف و الغرف",
+      "Adults": "بالغين",
+      "AdultsEx": "18+",
+      "Children": "أطفال",
+      "ChildrenEx": "0-17",
+      "Rooms": "غرف",
+      "RoomsEx": "عدد الغرف",
+      "Guest": "شيف",
+      "Guests": "ضيوف",
+      "Room": "غرفة"
+    },
+    "CancellationPolicy": "الغاء مجاني",
+    "SearchButton": "بحث",
+    "Error": {
+      "destination": "من فضلك اختر الوجهة",
+      "checkIn": "من فضلك ادخل موعد تسجيل الدخول",
+      "checkOut": "من فضلك ادخل موعد تسجيل الخروج"
+    }
+  },
   "AppDownloadBanner": {
-    "title": "افتح الميزات الحصرية المتوفرة فقط على تطبيق Wego. قم بتنزيله الآن!",
+    "title": "افتح الميزات الحصرية المتوفرة فقط على تطبيق Hotleno. قم بتنزيله الآن!",
     "features": {
       "1": "استمتع بأكثر من عشر ميزات عملية مصممة حصريا لمستخدمي التطبيق.",
       "2": "اكتشف صفحة الاستكشاف الخاصة بنا للوجهات الشهيرة وعطلات نهاية الأسبوع وأخبار السفر والمزيد.",
-      "3": "عملية دفع سريعة على تطبيق Wego مع إمكانية الوصول إلى الحجز دون اتصال بالإنترنت ، وخصومات متنوعة ، وتسجيل الدخول بدون كلمة مرور."
+      "3": "عملية دفع سريعة على تطبيق Hotleno مع إمكانية الوصول إلى الحجز دون اتصال بالإنترنت ، وخصومات متنوعة ، وتسجيل الدخول بدون كلمة مرور."
     },
     "scanText": "امسح للتحميل",
-    "appPreviewAlt": "معاينة تطبيق Wego",
+    "appPreviewAlt": "معاينة تطبيق Hotleno",
     "qrAlt": "رمز الاستجابة السريعة للتنزيل"
   },
   "FlightCard": {
@@ -264,27 +304,6 @@
     "nonStop": "بدون توقف",
     "stops": "{count, plural, zero {مباشر} one {توقف واحد} two {توقفان} few {# توقفات} many {# توقفاً} other {# توقف}}",
     "select": "اختيار"
-  },
-  "SearchHotelsComponent": {
-    "Guest": "ضيف",
-    "Guests": "ضيوف",
-    "Room": "غرفة",
-    "Rooms": "غرف",
-    "GuestsRooms": "الضيوف والغرف",
-    "Adults": "بالغين",
-    "Children": "أطفال",
-    "ChildrenAge": "0-17 سنة",
-    "AdvancedOptions": "خيارات متقدمة",
-    "Currency": "العملة",
-    "SortBy": {
-      "Title": "ترتيب حسب",
-      "Price": "السعر",
-      "Rating": "التقييم",
-      "Distance": "المسافة"
-    },
-    "PriceRange": "نطاق السعر",
-    "MinRating": "الحد الأدنى للتقييم",
-    "SearchButton": "بحث عن الفنادق"
   },
   "HotelsError": {
     "NoResults": {

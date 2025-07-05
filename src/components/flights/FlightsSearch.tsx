@@ -7,13 +7,10 @@ import FlightList from "./FlightList";
 import FlightsError from './FlightsError';
 import Select from '../ui/select';
 import UiDatePicker from '../ui/datepicker';
-import { AIRPORTSARRAY } from "@/constants/data";
+import AirportSelect from '../ui/airport-select';
 import {
   ArrowRightLeft,
   User,
-  ChevronDown,
-  ChevronUp,
-  SlidersHorizontal,
   X,
   Search,
   Loader2,
@@ -55,12 +52,12 @@ interface PassengerTypeConfig {
 type SortByType = 'price' | 'duration' | 'departure';
 
 // Passenger Selector Component
-const PassengerSelector = ({ 
-  passengers, 
+const PassengerSelector = ({
+  passengers,
   onChange,
-  onClose 
-}: { 
-  passengers: PassengerCounts; 
+  onClose
+}: {
+  passengers: PassengerCounts;
   onChange: (newPassengers: PassengerCounts) => void;
   onClose: () => void;
 }) => {
@@ -68,10 +65,10 @@ const PassengerSelector = ({
 
   const handleChange = (type: keyof PassengerCounts, delta: number) => {
     const newValue = Math.max(0, passengers[type] + delta);
-    
+
     // Apply infant limit (max 1 infant per adult)
     if (type === 'infants' && newValue > passengers.adults) return;
-    
+
     onChange({ ...passengers, [type]: newValue });
   };
 
@@ -94,7 +91,7 @@ const PassengerSelector = ({
   const passengerConfig = getPassengerTypeConfig();
 
   return (
-    <div className="absolute z-20 bg-white border border-gray-200 rounded-xl shadow-lg p-5 w-full mt-2 animate-fadeIn">
+    <div className="absolute z-20 bg-white border border-gray-200 rounded-xl shadow-lg p-5 w-[200%] mt-2 animate-fadeIn">
       <div className="flex justify-between items-center mb-4 pb-2 border-b border-gray-100">
         <h3 className="font-semibold text-gray-800">{t("Passengers.More")}</h3>
         <button
@@ -121,8 +118,8 @@ const PassengerSelector = ({
               <button
                 className="w-9 h-9 cursor-pointer rounded-full border border-gray-200 flex items-center justify-center disabled:opacity-30 hover:bg-blue-50 transition-colors"
                 disabled={
-                  type === 'adults' ? passengers.adults <= 1 : 
-                  type === 'infants' ? passengers.infants <= 0 : passengers.children <= 0
+                  type === 'adults' ? passengers.adults <= 1 :
+                    type === 'infants' ? passengers.infants <= 0 : passengers.children <= 0
                 }
                 onClick={() => handleChange(type, -1)}
                 aria-label={`Decrease ${type}`}
@@ -150,12 +147,12 @@ const PassengerSelector = ({
 export default function FlightsSearch() {
   const searchParams = useSearchParams();
   const t = useTranslations("SearchFlightsComponent");
-  
+
   // State initialization
   const [flights, setFlights] = useState<FlightData[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
+
   const [searchParamsState, setSearchParamsState] = useState({
     origin: searchParams.get('origin') || 'USE',
     destination: searchParams.get('destination') || 'HKT',
@@ -170,7 +167,6 @@ export default function FlightsSearch() {
       children: parseInt(searchParams.get('passengers.children') || '0') || 0,
       infants: parseInt(searchParams.get('passengers.infants') || '0') || 0
     } as PassengerCounts,
-    showAdvanced: false,
     showPassengerSelect: false
   });
 
@@ -251,7 +247,7 @@ export default function FlightsSearch() {
 
   // Handlers
   const handleParamChange = <K extends keyof typeof searchParamsState>(
-    key: K, 
+    key: K,
     value: typeof searchParamsState[K]
   ) => {
     setSearchParamsState(prev => ({ ...prev, [key]: value }));
@@ -270,14 +266,10 @@ export default function FlightsSearch() {
   };
 
   // Calculate total passengers
-  const totalPassengers = searchParamsState.passengers.adults + 
-                          searchParamsState.passengers.children + 
-                          searchParamsState.passengers.infants;
+  const totalPassengers = searchParamsState.passengers.adults +
+    searchParamsState.passengers.children +
+    searchParamsState.passengers.infants;
 
-  const airportOptions = AIRPORTSARRAY.map(airport => ({
-    value: airport.code.toUpperCase(),
-    label: `${airport.country.ar} - ${airport.city.ar} - ${airport.name.ar}`
-  }));
 
   // Get trip type labels
   const getTripTypeLabels = () => ({
@@ -301,65 +293,105 @@ export default function FlightsSearch() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-4">
+    <div>
       {/* Search Form */}
-      <div className="bg-white rounded-3xl shadow-xl p-8 mb-8 border border-gray-100">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
+      <div className="bg-white w-full shadow-xl p-6 border-b border-gray-100 sticky top-0 z-30">
+        <div className="flex items-center justify-between w-full mb-4">
+          {/* Trip Type Selector */}
+          <div className="flex p-1 pb-0 gap-2">
+            {(['one-way', 'round-trip'] as const).map((type) => {
+              const tripTypeLabels = getTripTypeLabels();
+              return (
+                <button
+                  key={type}
+                  type="button"
+                  className={`py-2 px-4 text-center rounded-full text-sm transition-all duration-300 cursor-pointer ${searchParamsState.tripType === type
+                ? 'bg-blue-700/50 shadow-md text-white font-medium'
+                : 'text-gray-500 bg-gray-200/50 hover:text-gray-700'
+                    }`}
+                  onClick={() => handleParamChange('tripType', type)}
+                >
+                  {tripTypeLabels[type]}
+                </button>
+              )
+            })}
+          </div>
+
+
+          <div className="flex items-center gap-2">
+
+            {/* Passengers */}
+            <div className="relative flex-1">
+              <div
+                className="border border-gray-200 rounded-xl py-2 pr-4 pl-10 cursor-pointer hover:border-blue-400 transition-colors duration-300 bg-white shadow-sm"
+                onClick={() => handleParamChange('showPassengerSelect', true)}
+              >
+                <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+                  <User size={20} className="text-blue-500" />
+                </div>
+                <div className="font-medium text-gray-800">
+                  {totalPassengers} {totalPassengers === 1 ? t("Passengers.One") : t("Passengers.More")}
+                </div>
+
+              </div>
+
+              {searchParamsState.showPassengerSelect && (
+                <PassengerSelector
+                  passengers={searchParamsState.passengers}
+                  onChange={handlePassengerChange}
+                  onClose={() => handleParamChange('showPassengerSelect', false)}
+                />
+              )}
+            </div>
+
+            {/* Currency */}
+            <Select
+              options={[
+                { value: 'USD', label: 'USD ($)' },
+                { value: 'EUR', label: 'EUR (€)' },
+                { value: 'GBP', label: 'GBP (£)' },
+                { value: 'SGD', label: 'SGD (S$)' },
+                { value: 'THB', label: 'THB (฿)' },
+              ]}
+              value={searchParamsState.currency}
+              onChange={value => handleParamChange('currency', value)}
+              placeholder="العملة"
+            />
+          </div>
+        </div>
+
+
+        <div className="flex gap-5 justify-between items-center">
           {/* Location Inputs */}
-          <div className="md:col-span-12 flex items-center space-x-3">
+          <div className="flex-[2] flex items-center relative">
             <div className="flex-1 relative">
-              <Select
-                options={airportOptions}
-                value={searchParamsState.origin}
+              <AirportSelect
+                value={''}
                 onChange={value => handleParamChange('origin', value)}
-                placeholder="Select origin"
-                className="text-lg"
+                placeholder={t('Location.Origin')}
               />
             </div>
 
             <button
+              type="button"
               onClick={swapLocations}
-              className="p-3 bg-white border border-gray-200 hover:border-blue-400 hover:bg-blue-50 rounded-full transition-all duration-300 shadow-md"
-              aria-label="Swap locations"
+              className="absolute border-x-2 border-gray-300 left-1/2 top-1/2 -translate-1/2 bg-white z-20 max-[767px]:left-0 max-[767px]:m-0 max-[767px]:top-1/2 max-[767px]:-translate-y-1/2 max-[767px]:z-20 p-2 cursor-pointer hover:border-blue-400 hover:bg-blue-50 rounded-full transition-all duration-300"
+              aria-label="SwapLocations"
             >
               <ArrowRightLeft size={18} className="text-blue-500" />
             </button>
 
             <div className="flex-1 relative">
-              <Select
-                options={airportOptions}
-                value={searchParamsState.destination}
+              <AirportSelect
+                value={''}
                 onChange={value => handleParamChange('destination', value)}
-                placeholder="Select destination"
-                className="text-lg"
+                placeholder={t('Location.Destination')}
               />
             </div>
           </div>
 
-          {/* Trip Type Selector */}
-          <div className="md:col-span-6">
-            <div className="flex bg-gray-100 rounded-xl p-1">
-              {(['one-way', 'round-trip'] as const).map(type => {
-                const tripTypeLabels = getTripTypeLabels();
-                return (
-                  <button
-                    key={type}
-                    className={`flex-1 py-3 px-4 text-center rounded-xl transition-all duration-300 ${
-                      searchParamsState.tripType === type
-                        ? 'bg-white shadow-md text-blue-600 font-medium'
-                        : 'text-gray-500 hover:text-gray-700'
-                    }`}
-                    onClick={() => handleParamChange('tripType', type)}
-                  >
-                    {tripTypeLabels[type]}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
           {/* Date Pickers */}
-          <div className="md:col-span-6 flex gap-3">
+          <div className="flex-[2] flex gap-3">
             <div className="flex-1 relative">
               <UiDatePicker
                 selected={searchParamsState.departureDate}
@@ -382,117 +414,24 @@ export default function FlightsSearch() {
               </div>
             )}
           </div>
-        </div>
 
-        {/* Advanced Options */}
-        <div className="mt-2 mb-3">
-          <button
-            className="flex items-center text-blue-600 cursor-pointer mb-2 hover:text-blue-800 transition-colors duration-300"
-            onClick={() => handleParamChange('showAdvanced', !searchParamsState.showAdvanced)}
-          >
-            <SlidersHorizontal size={18} className="mr-2" />
-            <span className="font-medium">{t("AdvancedOptions")}</span>
-            {searchParamsState.showAdvanced 
-              ? <ChevronUp size={18} className="ml-2" /> 
-              : <ChevronDown size={18} className="ml-2" />
-            }
-          </button>
-
-          {searchParamsState.showAdvanced && (
-            <div className="grid grid-cols-1 md:grid-cols-12 items-start gap-4 border-gray-100 animate-fadeIn">
-              {/* Currency */}
-              <div className="md:col-span-3">
-                <div className="border border-gray-200 rounded-xl p-4 bg-white shadow-sm">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">{t("Currency")}</label>
-                  <Select
-                    options={[
-                      { value: 'USD', label: 'USD ($)' },
-                      { value: 'EUR', label: 'EUR (€)' },
-                      { value: 'GBP', label: 'GBP (£)' },
-                      { value: 'SGD', label: 'SGD (S$)' },
-                      { value: 'THB', label: 'THB (฿)' },
-                    ]}
-                    value={searchParamsState.currency}
-                    onChange={value => handleParamChange('currency', value)}
-                    placeholder="Select currency"
-                  />
-                </div>
-              </div>
-
-              {/* Sort by */}
-              <div className="md:col-span-3">
-                <div className="border border-gray-200 rounded-xl p-4 bg-white shadow-sm">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">{t("SortBy.Title")}</label>
-                  <Select
-                    options={getSortByOptions()}
-                    value={searchParamsState.sortBy}
-                    onChange={handleSortByChange}
-                    placeholder="Sort by"
-                  />
-                </div>
-              </div>
-
-              {/* Passengers */}
-              <div className="md:col-span-3 relative">
-                <div
-                  className="border border-gray-200 rounded-xl p-4 pl-12 cursor-pointer hover:border-blue-400 transition-colors duration-300 bg-white shadow-sm"
-                  onClick={() => handleParamChange('showPassengerSelect', true)}
-                >
-                  <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
-                    <User size={20} className="text-blue-500" />
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    {totalPassengers} {totalPassengers === 1 ? t("Passengers.One") : t("Passengers.More")}
-                  </div>
-                  <div className="text-sm text-gray-500 mt-1">
-                    {searchParamsState.passengers.adults}A, {searchParamsState.passengers.children}C, {searchParamsState.passengers.infants}I
-                  </div>
-                </div>
-
-                {searchParamsState.showPassengerSelect && (
-                  <PassengerSelector
-                    passengers={searchParamsState.passengers}
-                    onChange={handlePassengerChange}
-                    onClose={() => handleParamChange('showPassengerSelect', false)}
-                  />
-                )}
-              </div>
-
-              {/* Direct flights */}
-              <div className="md:col-span-3 flex items-center pl-3">
+          {/* Search Button */}
+          <div className="flex-1">
+            <button
+              onClick={searchFlights}
+              disabled={loading}
+              className="w-full cursor-pointer bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white p-4 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-75"
+            >
+              {loading ? (
+                <Loader2 className="animate-spin h-6 w-6" />
+              ) : (
                 <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="direct"
-                    checked={searchParamsState.directOnly}
-                    onChange={e => handleParamChange('directOnly', e.target.checked)}
-                    className="w-5 h-5 text-blue-600 rounded focus:ring-blue-400 cursor-pointer"
-                  />
-                  <label htmlFor="direct" className="mx-2 block text-sm font-medium text-gray-700 cursor-pointer">
-                    {t("Direct")}
-                  </label>
+                  <Search size={20} className="mr-2" />
+                  <span className="font-medium">{t("SearchButton")}</span>
                 </div>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Search Button */}
-        <div className="w-full">
-          <button
-            onClick={searchFlights}
-            disabled={loading}
-            className="w-full cursor-pointer bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white p-4 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-75"
-          >
-            {loading ? (
-              <Loader2 className="animate-spin h-6 w-6" />
-            ) : (
-              <div className="flex items-center">
-                <Search size={20} className="mr-2" />
-                <span className="font-medium">{t("SearchButton")}</span>
-              </div>
-            )}
-          </button>
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Error message */}
@@ -505,24 +444,42 @@ export default function FlightsSearch() {
       </div>
 
       {/* Results Section */}
-      {loading ? (
-        <div className="flex justify-center py-12">
-          <Loader2 className="animate-spin h-12 w-12 text-blue-600" />
+      <div className="flex p-6 gap-6">
+        <div className="flex-[2]">
+          <div className="md:col-span-3">
+            <div className="border border-gray-200 rounded-xl p-4 bg-white shadow-sm">
+              <label className="block text-sm font-medium text-gray-700 mb-2">{t("SortBy.Title")}</label>
+              <Select
+                options={getSortByOptions()}
+                value={searchParamsState.sortBy}
+                onChange={handleSortByChange}
+                placeholder="Sort by"
+              />
+            </div>
+          </div>
         </div>
-      ) : flights.length > 0 ? (
-        <FlightList
-          flights={flights}
-          currency={searchParamsState.currency}
-          destination={searchParamsState.destination}
-          tripType={searchParamsState.tripType}
-          returnDate={searchParamsState.returnDate}
-          departureDate={searchParamsState.departureDate}
-          totalPassengers={totalPassengers}
-          originNow={searchParamsState.origin}
-        />
-      ) : !loading && (
-        <FlightsError />
-      )}
+        <div className="flex-[4]">
+          {loading ? (
+            <div className="flex justify-center py-12">
+              <Loader2 className="animate-spin h-12 w-12 text-blue-600" />
+            </div>
+          ) : flights.length > 0 ? (
+            <FlightList
+              flights={flights}
+              currency={searchParamsState.currency}
+              destination={searchParamsState.destination}
+              tripType={searchParamsState.tripType}
+              returnDate={searchParamsState.returnDate}
+              departureDate={searchParamsState.departureDate}
+              totalPassengers={totalPassengers}
+              originNow={searchParamsState.origin}
+            />
+          ) : !loading && (
+            <FlightsError />
+          )}
+        </div>
+        <div className="flex-1"></div>
+      </div>
     </div>
   );
 }

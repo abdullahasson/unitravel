@@ -57,7 +57,7 @@ const Select: React.FC<SelectProps> = ({
       <motion.button
         whileTap={{ scale: 0.98 }}
         className={`
-          flex items-center justify-between w-full px-4 py-3
+          flex items-center justify-between w-full px-4 py-2
           bg-white  rounded-xl border
           ${isOpen ? 'border-indigo-500' : 'border-gray-200'}
           shadow-sm hover:shadow-md transition-all duration-200
@@ -86,7 +86,7 @@ const Select: React.FC<SelectProps> = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="absolute z-10 w-full mt-2 py-2 bg-white  
+            className="absolute z-10 w-full mt-2 py-2 bg-white  !text-gray-900
                       rounded-xl shadow-lg border border-gray-200 
                       max-h-60 overflow-auto focus:outline-none"
             role="listbox"
@@ -95,7 +95,7 @@ const Select: React.FC<SelectProps> = ({
               <li
                 key={option.value}
                 className={`
-                  px-4 py-3 cursor-pointer flex items-center justify-between
+                  px-4 py-3 cursor-pointer flex items-center justify-between !text-gray-900
                   hover:bg-gray-100 
                   transition-colors duration-150
                   ${value === option.value ? 'bg-indigo-50' : ''}
