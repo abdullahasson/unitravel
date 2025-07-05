@@ -5,7 +5,7 @@ import Image from "next/image"
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 // Image
-import placeholder from "../../public/placeholder.svg"
+import placeholder from "../../../public/placeholder.svg"
 
 
 const PopularAirlines = () => {

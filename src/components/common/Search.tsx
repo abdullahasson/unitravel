@@ -4,8 +4,8 @@
 // React
 import { useState } from "react"
 // Components
-import HomeFlightsSearch from "./flights/HomeFlightsSearch"
-import HomeHotelssSearch from "./flights/HomeHotelsSearch";
+import HomeFlightsSearch from "../flights/HomeFlightsSearch"
+import HomeHotelssSearch from "../hotels/HomeHotelsSearch";
 
 const Search = () => {
 

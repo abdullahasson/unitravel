@@ -5,7 +5,7 @@ import Link from "next/link"
 // Next Intl
 import { useTranslations , useLocale } from "next-intl";
 // Components
-import SwitchLanguages from "../switch-languages"
+import SwitchLanguages from "../common/switch-languages"
 // Icons
 import { Plane , Hamburger } from "lucide-react"
 

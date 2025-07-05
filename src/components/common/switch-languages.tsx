@@ -9,11 +9,11 @@ import { useLocale } from "next-intl";
 // React
 import { useState } from "react";
 // Images
-import sa from "../../public/sa.png"
-import es from "../../public/es.png"
-import tr from "../../public/tr.png"
-import gb from "../../public/gb.png"
-import fr from "../../public/fr.png"
+import sa from "../../../public/sa.png"
+import es from "../../../public/es.png"
+import tr from "../../../public/tr.png"
+import gb from "../../../public/gb.png"
+import fr from "../../../public/fr.png"
 // Icons 
 import { ChevronDown } from "lucide-react"
 

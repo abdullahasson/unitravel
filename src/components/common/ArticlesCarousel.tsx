@@ -11,7 +11,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Icons
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 // Image
-import placeholder from "../../public/placeholder.svg"
+import placeholder from "../../../public/placeholder.svg"
 
 const ArticlesCarousel = ({ articles }: { articles: Article[] }) => {
     const t = useTranslations('ArticlesCarousel');

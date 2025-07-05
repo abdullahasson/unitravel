@@ -9,8 +9,7 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 // Components
-import Footer from "@/components/footer";
-// import Contact from "@/components/contact";
+import Footer from "@/components/common/footer";
 // Styles
 import "../globals.css";
 
